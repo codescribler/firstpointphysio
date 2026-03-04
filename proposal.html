@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Website Upgrade Proposal — First Point Physio</title>
+  <meta name="description" content="A website upgrade proposal prepared exclusively for First Point Physio by dreamfree.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0B7285;
+      --primary-dark: #085D6B;
+      --primary-deeper: #064A55;
+      --primary-light: #0E9AB5;
+      --accent: #E8590C;
+      --accent-hover: #D04D08;
+      --accent-glow: rgba(232, 89, 12, 0.35);
+      --teal-50: #F0FDFA;
+      --teal-100: #CCFBF1;
+      --teal-200: #99F6E4;
+      --teal-400: #2DD4BF;
+      --teal-500: #14B8A6;
+      --emerald: #059669;
+      --emerald-light: #34D399;
+      --bg: #FAFAF8;
+      --bg-warm: #F8F6F3;
+      --bg-cool: #F0F5F5;
+      --dark: #0A1E2C;
+      --dark-2: #071722;
+      --dark-card: #0E2A3A;
+      --text: #1B2A3B;
+      --text-2: #3D4F5F;
+      --text-muted: #6B7F8F;
+      --text-light: #94A3B3;
+      --white: #FFFFFF;
+      --border: #E2E8E7;
+      --border-light: #EEF2F1;
+      --heading: 'Figtree', system-ui, sans-serif;
+      --body: 'Noto Sans', system-ui, sans-serif;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 18px;
+      --r-xl: 24px;
+      --r-2xl: 32px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    body {
+      font-family: var(--body); font-size: 16px; line-height: 1.7;
+      color: var(--text); background: var(--bg);
+      overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .grain { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.025; mix-blend-mode: multiply; }
+
+    /* ═══ STICKY HEADER ═══ */
+    .prop-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06); transition: box-shadow 0.3s;
+    }
+    .prop-header.scrolled { box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.04); }
+    .prop-header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .prop-header-left { display: flex; align-items: center; gap: 20px; }
+    .prop-header-logo { height: 30px; width: auto; filter: brightness(0) saturate(100%); }
+    .prop-header-back {
+      display: inline-flex; align-items: center; gap: 6px; font-family: var(--heading);
+      font-size: 13.5px; font-weight: 600; color: var(--text-muted); transition: color 0.2s;
+    }
+    .prop-header-back svg { width: 16px; height: 16px; transition: transform 0.2s; }
+    .prop-header-back:hover { color: var(--primary); }
+    .prop-header-back:hover svg { transform: translateX(-3px); }
+
+    .prop-header-right { display: flex; align-items: center; gap: 12px; }
+    .btn-pdf {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px;
+      background: var(--primary); color: var(--white); border-radius: 100px;
+      font-family: var(--heading); font-size: 13.5px; font-weight: 700;
+      transition: all 0.25s; letter-spacing: 0.01em;
+    }
+    .btn-pdf svg { width: 16px; height: 16px; }
+    .btn-pdf:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(11,114,133,0.25); }
+
+    /* ═══ LAYOUT: TOC + CONTENT ═══ */
+    .prop-layout {
+      max-width: 1200px; margin: 0 auto; padding: 80px 24px 0;
+      display: grid; grid-template-columns: 220px 1fr; gap: 48px;
+    }
+
+    /* ═══ FLOATING TOC ═══ */
+    .toc {
+      position: sticky; top: 90px; align-self: start; padding: 24px 0;
+      max-height: calc(100vh - 110px); overflow-y: auto;
+    }
+    .toc-label {
+      font-family: var(--heading); font-size: 11px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light);
+      margin-bottom: 16px; padding-left: 16px;
+    }
+    .toc-list { list-style: none; }
+    .toc-link {
+      display: block; padding: 7px 16px; font-family: var(--heading); font-size: 13px;
+      font-weight: 500; color: var(--text-muted); border-left: 2px solid transparent;
+      transition: all 0.2s; line-height: 1.4;
+    }
+    .toc-link:hover { color: var(--primary); }
+    .toc-link.active {
+      color: var(--primary); font-weight: 700; border-left-color: var(--primary);
+      background: rgba(11,114,133,0.04);
+    }
+
+    /* ═══ CONTENT AREA ═══ */
+    .prop-content { max-width: 760px; padding-bottom: 120px; }
+
+    /* Title block */
+    .prop-title-block { margin-bottom: 64px; padding-bottom: 48px; border-bottom: 2px solid var(--border-light); }
+    .prop-title-block h1 {
+      font-family: var(--heading); font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 800; letter-spacing: -0.03em; color: var(--text); line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .prop-title-block .prop-client {
+      font-family: var(--heading); font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; color: var(--primary); margin-bottom: 24px;
+    }
+    .prop-meta {
+      display: flex; gap: 32px; font-size: 14px; color: var(--text-muted);
+    }
+    .prop-meta strong { color: var(--text-2); font-weight: 600; }
+
+    /* Section headings */
+    .prop-section { margin-bottom: 72px; scroll-margin-top: 90px; }
+    .section-num {
+      font-family: var(--heading); font-size: 13px; font-weight: 800;
+      color: var(--primary); letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 8px; display: block;
+    }
+    .prop-section > h2 {
+      font-family: var(--heading); font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 800; letter-spacing: -0.02em; color: var(--text); line-height: 1.15;
+      margin-bottom: 28px; padding-bottom: 20px;
+      border-bottom: 3px solid var(--teal-100);
+    }
+
+    /* Sub-headings (h3) */
+    .prop-section h3 {
+      font-family: var(--heading); font-size: 20px; font-weight: 700;
+      color: var(--text); margin: 36px 0 16px; line-height: 1.25;
+    }
+    .prop-section h4 {
+      font-family: var(--heading); font-size: 16px; font-weight: 700;
+      color: var(--text-2); margin: 28px 0 12px;
+    }
+
+    /* Body text */
+    .prop-section p {
+      font-size: 16px; line-height: 1.8; color: var(--text-2); margin-bottom: 20px;
+    }
+
+    /* Lists */
+    .prop-section ul, .prop-section ol {
+      margin: 0 0 24px 0; padding-left: 0; list-style: none;
+    }
+    .prop-section ul li, .prop-section ol li {
+      position: relative; padding-left: 24px; margin-bottom: 10px;
+      font-size: 15.5px; line-height: 1.7; color: var(--text-2);
+    }
+    .prop-section ul li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--primary);
+      opacity: 0.35;
+    }
+    .prop-section strong { color: var(--text); font-weight: 700; }
+
+    /* Blockquotes (callout boxes) */
+    .callout {
+      margin: 32px 0; padding: 24px 28px; border-left: 4px solid var(--primary);
+      background: var(--teal-50); border-radius: 0 var(--r-md) var(--r-md) 0;
+    }
+    .callout p {
+      font-size: 15.5px; font-style: italic; color: var(--primary-dark);
+      line-height: 1.75; margin: 0;
+    }
+
+    /* Images */
+    .prop-img {
+      margin: 32px auto; width: 90%; border-radius: var(--r-lg);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08); border: 1px solid var(--border-light);
+      overflow: hidden;
+    }
+    .prop-img img { width: 100%; display: block; }
+    .prop-img-caption {
+      font-size: 13px; font-style: italic; color: var(--text-muted);
+      text-align: center; margin-top: 12px; padding: 0 12px;
+    }
+
+    /* ═══ TABLES ═══ */
+    .table-wrap {
+      margin: 28px 0 36px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      border-radius: var(--r-lg); border: 1px solid var(--border);
+    }
+    .prop-table {
+      width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 500px;
+    }
+    .prop-table thead th {
+      font-family: var(--heading); font-size: 12px; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
+      padding: 14px 18px; text-align: left; background: var(--bg-cool);
+      border-bottom: 2px solid var(--border); white-space: nowrap;
+    }
+    .prop-table tbody td {
+      padding: 13px 18px; border-bottom: 1px solid var(--border-light);
+      vertical-align: top; line-height: 1.6; color: var(--text-2);
+    }
+    .prop-table tbody tr:last-child td { border-bottom: none; }
+    .prop-table tbody tr:hover { background: rgba(11,114,133,0.02); }
+
+    /* Highlighted column (recommended option) */
+    .col-highlight {
+      background: rgba(11,114,133,0.05) !important;
+    }
+    .prop-table thead th.col-highlight {
+      background: var(--primary) !important; color: var(--white);
+    }
+    .prop-table tbody td.col-highlight {
+      background: rgba(11,114,133,0.04);
+    }
+
+    /* Key-value tables (Option A, Option B detail) */
+    .kv-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .kv-table td {
+      padding: 14px 0; border-bottom: 1px solid var(--border-light);
+      vertical-align: top; line-height: 1.65;
+    }
+    .kv-table td:first-child {
+      font-weight: 700; color: var(--text); width: 260px; padding-right: 24px;
+    }
+    .kv-table td:last-child { color: var(--text-2); }
+    .kv-table tr:last-child td { border-bottom: none; }
+
+    /* Horizontal rules */
+    .prop-hr {
+      border: none; height: 3px; background: linear-gradient(90deg, var(--primary), var(--teal-400), transparent);
+      margin: 64px 0; border-radius: 3px; opacity: 0.3;
+    }
+
+    /* ═══ CTA FOOTER ═══ */
+    .prop-cta {
+      background: var(--dark); border-radius: var(--r-2xl); padding: 64px 48px;
+      text-align: center; margin-top: 24px;
+    }
+    .prop-cta h2 {
+      font-family: var(--heading); font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .prop-cta .cta-sub {
+      font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 36px; line-height: 1.7;
+    }
+    .prop-cta-contacts {
+      display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; margin-bottom: 36px;
+    }
+    .prop-cta-contact {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--heading); font-size: 16px; font-weight: 600; color: var(--white);
+      transition: color 0.2s;
+    }
+    .prop-cta-contact:hover { color: var(--teal-400); }
+    .prop-cta-contact svg { width: 20px; height: 20px; stroke: var(--teal-400); flex-shrink: 0; }
+
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px;
+      background: var(--accent); color: var(--white); border-radius: 100px;
+      font-family: var(--heading); font-size: 16px; font-weight: 700;
+      transition: all 0.3s; letter-spacing: 0.01em;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--accent-glow); }
+    .btn-cta svg { width: 18px; height: 18px; transition: transform 0.3s; }
+    .btn-cta:hover svg { transform: translateX(3px); }
+
+    /* ═══ SITE FOOTER ═══ */
+    .prop-footer {
+      text-align: center; padding: 48px 24px; color: var(--text-light); font-size: 13px;
+    }
+    .prop-footer img { height: 18px; margin: 0 auto 10px; opacity: 0.4; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 960px) {
+      .toc { display: none; }
+      .prop-layout { grid-template-columns: 1fr; padding-top: 72px; }
+      .prop-content { max-width: 100%; }
+    }
+    @media (max-width: 640px) {
+      .prop-header-inner { padding: 12px 16px; }
+      .prop-header-back span { display: none; }
+      .prop-layout { padding: 64px 16px 0; }
+      .prop-title-block { margin-bottom: 48px; padding-bottom: 36px; }
+      .prop-meta { flex-direction: column; gap: 8px; }
+      .prop-cta { padding: 48px 24px; border-radius: var(--r-xl); }
+      .prop-cta-contacts { flex-direction: column; align-items: center; gap: 20px; }
+      .prop-img { width: 100%; }
+      .kv-table td:first-child { width: auto; display: block; padding-bottom: 2px; }
+      .kv-table td:last-child { display: block; padding-top: 0; }
+      .prop-section > h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg class="grain" aria-hidden="true"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+
+  <!-- ═══ STICKY HEADER ═══ -->
+  <header class="prop-header" id="propHeader">
+    <div class="prop-header-inner">
+      <div class="prop-header-left">
+        <img src="images/logo (1).jpg" alt="First Point Physio" class="prop-header-logo">
+        <a href="index.html" class="prop-header-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          <span>Back to overview</span>
+        </a>
+      </div>
+      <div class="prop-header-right">
+        <a href="public/FirstPoint-Physio-Website-Upgrade-Proposal.pdf" download class="btn-pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ LAYOUT ═══ -->
+  <div class="prop-layout">
+
+    <!-- TOC sidebar -->
+    <aside class="toc" id="toc">
+      <div class="toc-label">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#s01" class="toc-link" data-section="s01">01 — Executive Summary</a></li>
+        <li><a href="#s02" class="toc-link" data-section="s02">02 — Current Situation</a></li>
+        <li><a href="#s03" class="toc-link" data-section="s03">03 — What We're Proposing</a></li>
+        <li><a href="#s04" class="toc-link" data-section="s04">04 — Homepage Preview</a></li>
+        <li><a href="#s05" class="toc-link" data-section="s05">05 — Competitive Landscape</a></li>
+        <li><a href="#s06" class="toc-link" data-section="s06">06 — Recruitment System</a></li>
+        <li><a href="#s07" class="toc-link" data-section="s07">07 — Sales Funnel</a></li>
+        <li><a href="#s08" class="toc-link" data-section="s08">08 — Document Management</a></li>
+        <li><a href="#s09" class="toc-link" data-section="s09">09 — Pricing & Packages</a></li>
+        <li><a href="#s10" class="toc-link" data-section="s10">10 — Timeline & Next Steps</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <main class="prop-content">
+
+      <!-- Title block -->
+      <div class="prop-title-block">
+        <h1>Website Upgrade Proposal</h1>
+        <div class="prop-client">First Point Physio</div>
+        <div class="prop-meta">
+          <div><strong>Prepared for</strong> Phillip Dale — Director</div>
+          <div><strong>Prepared by</strong> dreamfree</div>
+          <div><strong>Date</strong> March 2026</div>
+        </div>
+      </div>
+
+      <!-- ═══ 01 ═══ -->
+      <section class="prop-section" id="s01">
+        <span class="section-num">01</span>
+        <h2>Executive Summary</h2>
+
+        <p>The current First Point Physio website was built several years ago on WordPress with limited content. It still functions, but it no longer reflects the quality of the service you provide, nor does it work hard enough to win new PCN contracts or attract physiotherapy candidates.</p>
+
+        <p>This proposal outlines a complete rebuild on a modern technology platform delivering three things:</p>
+
+        <ul>
+          <li><strong>A professional, content-rich marketing presence</strong> that positions First Point Physio as the obvious choice for PCNs evaluating FCP providers</li>
+          <li><strong>A built-in recruitment management system</strong> that streamlines your candidate pipeline and replaces the current module that isn't working effectively</li>
+          <li><strong>A sales funnel with automated lead nurture</strong> that turns website visitors into warm enquiries through a compelling lead magnet and email sequence</li>
+        </ul>
+
+        <p>To demonstrate the potential, I've already designed a draft homepage showing the visual quality and example copy for the new site. Screenshots are included in this proposal.</p>
+
+        <p>The proposal is structured so you can choose the scope that's right for you — from a core website rebuild through to a full platform with recruitment and marketing automation. All options are priced as simple monthly agreements, consistent with how we already work together.</p>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 02 ═══ -->
+      <section class="prop-section" id="s02">
+        <span class="section-num">02</span>
+        <h2>The Current Situation</h2>
+
+        <p>The existing website was built on WordPress and launched with minimal content. The plan was always to expand it progressively, but that never happened. Several years on, the site has:</p>
+
+        <ul>
+          <li>An <strong>outdated design</strong> that doesn't reflect the quality of your service</li>
+          <li>Only <strong>around 6 substantive pages</strong> — far less content than every direct competitor</li>
+          <li>A <strong>recruitment module that doesn't work efficiently</strong>, making it harder to manage your most critical operational need</li>
+          <li>A <strong>CRM and email system that was never activated</strong> — the case study download captures leads but no follow-up sequence was ever built</li>
+          <li>A <strong>document management system</strong> for staff policies that appears never to have been used in practice</li>
+          <li><strong>No blog, no ARRS funding guide, no detailed service pages</strong> — content your competitors all have</li>
+          <li>An <strong>ageing WordPress platform</strong> that requires increasing maintenance effort</li>
+        </ul>
+
+        <h3>The Current Homepage</h3>
+
+        <figure class="prop-img">
+          <img src="images/proposal/fpp-oldsite.jpg" alt="The current First Point Physio homepage">
+        </figure>
+        <p class="prop-img-caption">The current First Point Physio homepage</p>
+
+        <p>The site still works, but every day it remains in its current state it represents an opportunity cost — PCN decision-makers see a less professional presence than your competitors, and qualified physiotherapy candidates may choose a provider that looks more established online.</p>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 03 ═══ -->
+      <section class="prop-section" id="s03">
+        <span class="section-num">03</span>
+        <h2>What We're Proposing</h2>
+
+        <p>A complete rebuild of the First Point Physio website on a modern platform, designed around three priorities:</p>
+
+        <h3>1. Win more PCN contracts</h3>
+        <p>The new site uses a proven messaging framework that positions the customer as the hero and makes it immediately clear what you offer, how it helps, and what to do next. Every section of the homepage is structured to move a practice manager or clinical director towards booking a discovery call. The site will include dedicated pages for PCN decision-makers, an ARRS funding guide, detailed service pages, case studies, and evidence — all the content your competitors have that you currently don't.</p>
+
+        <h3>2. Recruit better, faster</h3>
+        <p>Recruitment is your most critical operational challenge. With 47 staff and growing, you need a constant pipeline of qualified physiotherapists. The new site can include a purpose-built recruitment system that replaces the current module — with proper application forms, CV uploads, and a pipeline management board your team can use daily.</p>
+
+        <h3>3. Generate leads automatically</h3>
+        <p>The current case study download captures email addresses but does nothing with them. The new site can include a properly built sales funnel — a compelling lead magnet, a gated download page, and an automated 6-email nurture sequence that warms prospects and drives them to get in touch. This turns the website from a brochure into an active sales tool.</p>
+
+        <h3>The technical approach</h3>
+        <p>The new site would be built on a modern stack (Next.js), replacing WordPress entirely. Running both platforms in parallel would increase hosting and maintenance costs, so the upgrade would be all-or-nothing — the new site replaces the old one completely. This gives you a faster, more secure, more maintainable platform that's purpose-built for your needs.</p>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 04 ═══ -->
+      <section class="prop-section" id="s04">
+        <span class="section-num">04</span>
+        <h2>The New Homepage — Preview</h2>
+
+        <p>I've already designed a complete homepage to demonstrate the quality and direction of the rebuild. Below are screenshots showing the key sections.</p>
+
+        <h3>Hero Section</h3>
+        <p>Passes the 5-second test: what you offer, how it helps, what to do next.</p>
+        <figure class="prop-img">
+          <img src="images/proposal/fpp-newsite-homepage.jpg" alt="New homepage hero — clear headline, dual CTAs, trust signals">
+        </figure>
+        <p class="prop-img-caption">New homepage hero — clear headline, dual CTAs, trust signals</p>
+
+        <h3>The Challenge</h3>
+        <p>Names the problem practice managers face, creating emotional resonance.</p>
+        <figure class="prop-img">
+          <img src="images/proposal/fpp-thechallenge.jpg" alt="Problem and stakes section">
+        </figure>
+        <p class="prop-img-caption">Problem and stakes section — empathetic, not aggressive</p>
+
+        <h3>The Difference</h3>
+        <p>Four clear benefits, customer-focused rather than feature-focused.</p>
+        <figure class="prop-img">
+          <img src="images/proposal/fpp-thedifference.jpg" alt="Value proposition — benefits grid with icons">
+        </figure>
+        <p class="prop-img-caption">Value proposition — benefits grid with icons</p>
+
+        <h3>Your Partner</h3>
+        <p>Empathy statement paired with testimonial and authority stats.</p>
+        <figure class="prop-img">
+          <img src="images/proposal/fpp-yourpartner.jpg" alt="Guide section — empathy and authority combined">
+        </figure>
+        <p class="prop-img-caption">Guide section — empathy and authority combined</p>
+
+        <h3>The Process</h3>
+        <p>Three simple steps that make working with you feel effortless.</p>
+        <figure class="prop-img">
+          <img src="images/proposal/fpp-theprocess.jpg" alt="3-step plan — clear path from enquiry to result">
+        </figure>
+        <p class="prop-img-caption">3-step plan — clear path from enquiry to result</p>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 05 ═══ -->
+      <section class="prop-section" id="s05">
+        <span class="section-num">05</span>
+        <h2>Competitive Landscape</h2>
+
+        <p>Your direct competitors have invested significantly in their online presence. Primary Care Physio — the market leader with 175+ PCNs and 400 staff — has a polished, content-rich website with detailed service pages, case studies, a blog, and dedicated recruitment content.</p>
+
+        <figure class="prop-img">
+          <img src="images/proposal/fpp-comptitor-primarycarephysio.jpg" alt="Primary Care Physio — competitor homepage">
+        </figure>
+        <p class="prop-img-caption">Primary Care Physio — your largest competitor's homepage</p>
+
+        <p>When a practice manager evaluates FCP providers, they will visit both websites. Right now, the comparison works against you — not because your service is worse, but because your website doesn't communicate your quality as effectively.</p>
+
+        <div class="table-wrap">
+          <table class="prop-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>First Point Physio (current)</th>
+                <th>Primary Care Physio</th>
+                <th class="col-highlight">First Point Physio (proposed)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Detailed service pages</strong></td>
+                <td>No</td>
+                <td>Yes</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>ARRS funding guide</strong></td>
+                <td>No</td>
+                <td>Yes</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>Blog / thought leadership</strong></td>
+                <td>No</td>
+                <td>Yes</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>Multiple case studies</strong></td>
+                <td>1 (gated)</td>
+                <td>Multiple</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>Evidence / outcomes data</strong></td>
+                <td>No</td>
+                <td>Yes</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>Recruitment content</strong></td>
+                <td>Basic</td>
+                <td>Detailed</td>
+                <td class="col-highlight">&#10003; + Pipeline system</td>
+              </tr>
+              <tr>
+                <td><strong>Lead generation funnel</strong></td>
+                <td>No follow-up</td>
+                <td>Basic</td>
+                <td class="col-highlight">&#10003; Automated nurture</td>
+              </tr>
+              <tr>
+                <td><strong>Mobile-optimised design</strong></td>
+                <td>Dated</td>
+                <td>Yes</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <p>The proposed new site doesn't just catch up — it surpasses them with a purpose-built recruitment system and automated lead nurture that none of your competitors currently offer.</p>
+        </div>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 06 ═══ -->
+      <section class="prop-section" id="s06">
+        <span class="section-num">06</span>
+        <h2>Add-On: Recruitment Management System</h2>
+
+        <p>With 47 staff placed across multiple regions, recruitment is your most critical ongoing operational need. The current website has a basic recruitment module, but it doesn't work efficiently. This add-on replaces it with a purpose-built system.</p>
+
+        <h3>What candidates see</h3>
+        <ul>
+          <li>Professional careers page showcasing what it's like to work as an FCP with First Point Physio</li>
+          <li>Individual job listings with role details, location, band level, and requirements</li>
+          <li>Clean application form with CV and supporting document upload</li>
+          <li>Automatic confirmation email on submission</li>
+        </ul>
+
+        <h3>What your team sees</h3>
+        <ul>
+          <li>A pipeline management board (similar to Trello) with drag-and-drop stages</li>
+          <li><strong>Incoming &rarr; Screened &rarr; Interviewed &rarr; Hired &rarr; Rejected</strong></li>
+          <li>Candidate cards showing name, role applied for, CV download, date applied</li>
+          <li>Internal notes on each candidate (visible only to your team)</li>
+          <li>Email notifications when new applications arrive</li>
+          <li>Filter and search by role, location, or status</li>
+        </ul>
+
+        <p>This system is designed to be simple and practical — not an enterprise HR platform, but exactly what a team your size needs to stay on top of a rolling recruitment pipeline without spreadsheets or email chains.</p>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 07 ═══ -->
+      <section class="prop-section" id="s07">
+        <span class="section-num">07</span>
+        <h2>Add-On: Sales Funnel &amp; Lead Nurture</h2>
+
+        <p>The current site has a gated case study download and a basic contacts database — but no email sequence was ever written, and the case study is generic. Every lead that downloads the case study goes cold with no follow-up. This add-on fixes that.</p>
+
+        <h3>What gets built</h3>
+
+        <h4>1. A compelling lead magnet (PDF guide)</h4>
+        <p>We replace the generic case study with a purpose-built resource: <em>"The Practice Manager's Guide to Outsourced FCP Services."</em> This 8–12 page PDF covers how ARRS funding works with outsourced providers, the real cost comparison of in-house vs managed FCP, what to look for in a provider, and red flags in contracts. It's designed to be genuinely useful — the kind of thing practice managers share with colleagues.</p>
+
+        <h4>2. A gated landing page</h4>
+        <p>A dedicated download page with strong, benefit-led copy, clear bullet points on what the guide covers, and a simple email capture form.</p>
+
+        <h4>3. A 6-email automated nurture sequence</h4>
+        <p>Once someone downloads the guide, they receive a carefully written sequence over 2–3 weeks:</p>
+        <ul>
+          <li><strong>Email 1:</strong> Deliver the guide + welcome message</li>
+          <li><strong>Email 2:</strong> Problem + solution — why most PCNs struggle with in-house FCP recruitment</li>
+          <li><strong>Email 3:</strong> Social proof — case study summary with real outcomes</li>
+          <li><strong>Email 4:</strong> Overcome objection — addressing the #1 concern about outsourcing</li>
+          <li><strong>Email 5:</strong> Insight — the hidden cost of unfilled ARRS roles</li>
+          <li><strong>Email 6:</strong> Direct ask — book a discovery call</li>
+        </ul>
+
+        <h4>4. Lead tracking</h4>
+        <p>A simple dashboard replacing the current contacts database, showing who downloaded, who opened emails, and who's warming up — so you know which prospects to follow up with personally.</p>
+
+        <div class="callout">
+          <p>This is the component most likely to generate direct revenue. A single new PCN contract won through this funnel would pay for the entire website upgrade many times over.</p>
+        </div>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 08 ═══ -->
+      <section class="prop-section" id="s08">
+        <span class="section-num">08</span>
+        <h2>The Document Management System</h2>
+
+        <p>The current WordPress site includes a custom document management system designed to store company policies, allow physiotherapists to acknowledge they've read them, and automatically distribute updated policies to relevant staff.</p>
+
+        <p><strong>However, this system appears never to have been used in practice.</strong></p>
+
+        <p>Rebuilding it within the new platform would add significant development time and cost. My recommendation is to <strong>remove it by default</strong> to keep the project focused and affordable. If it turns out to be genuinely needed for your operations, it can be rebuilt as a future addition.</p>
+
+        <p>If you'd like to discuss this further, I'm happy to explore whether a simpler solution (such as a shared document library with read-receipt tracking) would meet the underlying need at a fraction of the cost of a full rebuild.</p>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 09 ═══ -->
+      <section class="prop-section" id="s09">
+        <span class="section-num">09</span>
+        <h2>Pricing &amp; Packages</h2>
+
+        <p>All options are structured as monthly agreements — consistent with how we already work together. The upgrade costs are spread over a 24-month term, after which the monthly rate reduces to an ongoing maintenance level. There are no large upfront invoices.</p>
+
+        <h3>Option A — Current Site, Updated Rate</h3>
+        <p>If you prefer to stay with the current WordPress site, a rate adjustment is needed. The current rate of &pound;197/month has been unchanged since the site launched and no longer reflects the maintenance requirements of an ageing WordPress platform.</p>
+
+        <table class="kv-table">
+          <tr><td>Monthly cost</td><td><strong>&pound;295 /month</strong></td></tr>
+          <tr><td>What's included</td><td>Hosting, security updates, WordPress maintenance, basic support</td></tr>
+          <tr><td>Contract</td><td>Rolling monthly</td></tr>
+          <tr><td>Content or design changes</td><td>None — site remains as-is</td></tr>
+        </table>
+
+        <h3>Option B — Website Rebuild (Recommended)</h3>
+        <p>A complete redesign on a modern platform with professional copy, mobile-first design, expanded content, and exercise handout library migration.</p>
+
+        <table class="kv-table">
+          <tr><td>Monthly cost (24-month term)</td><td><strong>&pound;375 /month</strong></td></tr>
+          <tr><td>After 24 months</td><td>Drops to &pound;275 /month ongoing</td></tr>
+          <tr><td>What's included</td><td>Complete website rebuild on modern stack (Next.js), professional copy for all pages, mobile-first responsive design, exercise handout library migration, hosting, maintenance, priority support, ongoing content support and updates</td></tr>
+          <tr><td>Additional vs Option A</td><td><strong>Only &pound;80/month more</strong> for a completely new website</td></tr>
+        </table>
+
+        <h3>Optional Add-Ons</h3>
+        <p>These can be added to Option B at any time — from launch or phased in later.</p>
+
+        <div class="table-wrap">
+          <table class="prop-table">
+            <thead>
+              <tr>
+                <th>Add-on</th>
+                <th>What's included</th>
+                <th>Monthly</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Recruitment Management</strong></td>
+                <td>Candidate application form with CV upload, pipeline board (Incoming &rarr; Screened &rarr; Interviewed &rarr; Hired &rarr; Rejected), internal notes, email notifications, search &amp; filter. Replaces current recruitment module.</td>
+                <td><strong>+ &pound;85 /mo</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Sales Funnel &amp; Lead Nurture</strong></td>
+                <td>Professional lead magnet PDF (written and designed), gated landing page with conversion-optimised copy, 6-email automated nurture sequence (written and configured), lead tracking dashboard replacing current contacts database.</td>
+                <td><strong>+ &pound;75 /mo</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>At a Glance</h3>
+
+        <div class="table-wrap">
+          <table class="prop-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Option A — Current site</th>
+                <th>Option B — Website rebuild</th>
+                <th class="col-highlight">Option B + Both — Full platform</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Monthly cost</strong></td>
+                <td>&pound;295</td>
+                <td>&pound;375</td>
+                <td class="col-highlight"><strong>&pound;535</strong></td>
+              </tr>
+              <tr>
+                <td><strong>vs. current &pound;197/mo</strong></td>
+                <td>+&pound;98</td>
+                <td>+&pound;178</td>
+                <td class="col-highlight">+&pound;338</td>
+              </tr>
+              <tr>
+                <td><strong>New website</strong></td>
+                <td>—</td>
+                <td>&#10003;</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>Professional copy</strong></td>
+                <td>—</td>
+                <td>&#10003;</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>Recruitment system</strong></td>
+                <td>—</td>
+                <td>Optional</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>Sales funnel</strong></td>
+                <td>—</td>
+                <td>Optional</td>
+                <td class="col-highlight">&#10003;</td>
+              </tr>
+              <tr>
+                <td><strong>After 24 months</strong></td>
+                <td>&pound;295</td>
+                <td>&pound;275</td>
+                <td class="col-highlight"><strong>&pound;350</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <p>The full platform at &pound;535/month is less than the cost of a single day of FCP service — and it works for your business 24 hours a day. A single new PCN contract won through the website would pay for years of the service.</p>
+        </div>
+      </section>
+
+      <hr class="prop-hr">
+
+      <!-- ═══ 10 ═══ -->
+      <section class="prop-section" id="s10">
+        <span class="section-num">10</span>
+        <h2>Timeline &amp; Next Steps</h2>
+
+        <h3>Estimated timeline</h3>
+
+        <div class="table-wrap">
+          <table class="prop-table">
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>What happens</th>
+                <th>Timeframe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Kick-off</strong></td>
+                <td>Confirm scope, gather brand assets, finalise copy review process</td>
+                <td>Week 1</td>
+              </tr>
+              <tr>
+                <td><strong>Copy &amp; Content</strong></td>
+                <td>Finalise all page copy, write lead magnet and emails (if included)</td>
+                <td>Weeks 2–3</td>
+              </tr>
+              <tr>
+                <td><strong>Design &amp; Build</strong></td>
+                <td>Build all pages, integrate recruitment system (if included), configure email automation</td>
+                <td>Weeks 3–6</td>
+              </tr>
+              <tr>
+                <td><strong>Review &amp; Testing</strong></td>
+                <td>Your team reviews, we refine. Mobile, browser, and form testing</td>
+                <td>Weeks 6–7</td>
+              </tr>
+              <tr>
+                <td><strong>Launch</strong></td>
+                <td>Go live, redirect old URLs, monitor performance</td>
+                <td>Week 8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>What I need from you</h3>
+        <p>This project is designed to require minimal time from you and your team:</p>
+        <ul>
+          <li>A 30-minute kick-off call to confirm scope and priorities</li>
+          <li>Access to any existing brand assets (team photos, logos, case study data)</li>
+          <li>One round of copy review and feedback</li>
+          <li>A nominated person on your team to test the site before launch</li>
+        </ul>
+
+        <h3>To get started</h3>
+        <p>If you'd like to go ahead — or discuss any aspect of this proposal — just let me know. I'm happy to jump on a call or answer questions over email.</p>
+        <p><strong>The homepage design is already done. Once we agree on scope, I can begin immediately.</strong></p>
+      </section>
+
+      <!-- ═══ CTA ═══ -->
+      <div class="prop-cta">
+        <h2>Ready to discuss?</h2>
+        <p class="cta-sub">Let's talk through the options and find the right fit for First Point Physio.</p>
+        <div class="prop-cta-contacts">
+          <a href="mailto:daniel@dreamfree.co.uk" class="prop-cta-contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            daniel@dreamfree.co.uk
+          </a>
+          <a href="tel:+447786556885" class="prop-cta-contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            07786 556 885
+          </a>
+        </div>
+        <a href="mailto:daniel@dreamfree.co.uk?subject=First%20Point%20Physio%20Website%20Proposal" class="btn-cta">
+          Get in touch
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="prop-footer">
+    <img src="images/proposal/dreamfree.png" alt="dreamfree">
+    <p>&copy; 2026 dreamfree. Prepared exclusively for First Point Physio.</p>
+  </footer>
+
+  <!-- ═══ TOC SCROLL TRACKING ═══ -->
+  <script>
+    // Sticky header shadow
+    const header = document.getElementById('propHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // TOC active state
+    const sections = document.querySelectorAll('.prop-section');
+    const tocLinks = document.querySelectorAll('.toc-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-link[data-section="${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
