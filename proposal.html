@@ -85,7 +85,7 @@
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
     .prop-header-left { display: flex; align-items: center; gap: 20px; }
-    .prop-header-logo { height: 30px; width: auto; filter: brightness(0) saturate(100%); }
+    .prop-header-logo { height: 30px; width: auto; }
     .prop-header-back {
       display: inline-flex; align-items: center; gap: 6px; font-family: var(--heading);
       font-size: 13.5px; font-weight: 600; color: var(--text-muted); transition: color 0.2s;
@@ -323,13 +323,38 @@
       .prop-section { margin-bottom: 48px; }
       .prop-section > h2 { font-size: 22px; padding-bottom: 14px; margin-bottom: 20px; }
       .prop-section h3 { font-size: 18px; margin: 28px 0 12px; }
-      .prop-section p { font-size: 15px; }
+      .prop-section p { font-size: 15px; line-height: 1.7; }
       .prop-section ul li, .prop-section ol li { font-size: 14.5px; }
       .callout { padding: 18px 20px; margin: 24px 0; }
       .callout p { font-size: 14.5px; }
-      .prop-table { font-size: 13px; min-width: 400px; }
-      .prop-table thead th { padding: 10px 12px; font-size: 11px; }
-      .prop-table tbody td { padding: 10px 12px; }
+
+      /* Stack tables into card layout on mobile */
+      .table-wrap { border: none; border-radius: 0; }
+      .prop-table { min-width: 0; }
+      .prop-table thead { display: none; }
+      .prop-table tbody tr {
+        display: block; margin-bottom: 16px; padding: 16px;
+        border: 1px solid var(--border); border-radius: var(--r-md);
+        background: var(--white);
+      }
+      .prop-table tbody td {
+        display: block; padding: 4px 0; border-bottom: none;
+        font-size: 14px;
+      }
+      .prop-table tbody td:first-child {
+        font-weight: 700; color: var(--text); font-size: 15px;
+        padding-bottom: 8px; margin-bottom: 8px;
+        border-bottom: 1px solid var(--border-light);
+      }
+      .prop-table tbody td::before {
+        content: attr(data-label);
+        display: block; font-size: 11px; font-weight: 800;
+        letter-spacing: 0.06em; text-transform: uppercase;
+        color: var(--text-muted); margin-bottom: 2px;
+      }
+      .prop-table tbody td:first-child::before { display: none; }
+      .prop-table tbody td.col-highlight { background: rgba(11,114,133,0.06); padding: 8px; border-radius: var(--r-sm); margin-top: 4px; }
+
       .kv-table { font-size: 14px; }
       .kv-table td:first-child { width: auto; display: block; padding-bottom: 2px; }
       .kv-table td:last-child { display: block; padding-top: 0; }
@@ -544,51 +569,51 @@
             <tbody>
               <tr>
                 <td><strong>Detailed service pages</strong></td>
-                <td>No</td>
-                <td>Yes</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="FPP (current)">No</td>
+                <td data-label="Primary Care Physio">Yes</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>ARRS funding guide</strong></td>
-                <td>No</td>
-                <td>Yes</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="FPP (current)">No</td>
+                <td data-label="Primary Care Physio">Yes</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>Blog / thought leadership</strong></td>
-                <td>No</td>
-                <td>Yes</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="FPP (current)">No</td>
+                <td data-label="Primary Care Physio">Yes</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>Multiple case studies</strong></td>
-                <td>1 (gated)</td>
-                <td>Multiple</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="FPP (current)">1 (gated)</td>
+                <td data-label="Primary Care Physio">Multiple</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>Evidence / outcomes data</strong></td>
-                <td>No</td>
-                <td>Yes</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="FPP (current)">No</td>
+                <td data-label="Primary Care Physio">Yes</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>Recruitment content</strong></td>
-                <td>Basic</td>
-                <td>Detailed</td>
-                <td class="col-highlight">&#10003; + Pipeline system</td>
+                <td data-label="FPP (current)">Basic</td>
+                <td data-label="Primary Care Physio">Detailed</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003; + Pipeline system</td>
               </tr>
               <tr>
                 <td><strong>Lead generation funnel</strong></td>
-                <td>No follow-up</td>
-                <td>Basic</td>
-                <td class="col-highlight">&#10003; Automated nurture</td>
+                <td data-label="FPP (current)">No follow-up</td>
+                <td data-label="Primary Care Physio">Basic</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003; Automated nurture</td>
               </tr>
               <tr>
                 <td><strong>Mobile-optimised design</strong></td>
-                <td>Dated</td>
-                <td>Yes</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="FPP (current)">Dated</td>
+                <td data-label="Primary Care Physio">Yes</td>
+                <td class="col-highlight" data-label="FPP (proposed)">&#10003;</td>
               </tr>
             </tbody>
           </table>
@@ -725,13 +750,13 @@
             <tbody>
               <tr>
                 <td><strong>Recruitment Management</strong></td>
-                <td>Candidate application form with CV upload, pipeline board (Incoming &rarr; Screened &rarr; Interviewed &rarr; Hired &rarr; Rejected), internal notes, email notifications, search &amp; filter. Replaces current recruitment module.</td>
-                <td><strong>+ &pound;85 /mo</strong></td>
+                <td data-label="What's included">Candidate application form with CV upload, pipeline board (Incoming &rarr; Screened &rarr; Interviewed &rarr; Hired &rarr; Rejected), internal notes, email notifications, search &amp; filter. Replaces current recruitment module.</td>
+                <td data-label="Monthly"><strong>+ &pound;85 /mo</strong></td>
               </tr>
               <tr>
                 <td><strong>Sales Funnel &amp; Lead Nurture</strong></td>
-                <td>Professional lead magnet PDF (written and designed), gated landing page with conversion-optimised copy, 6-email automated nurture sequence (written and configured), lead tracking dashboard replacing current contacts database.</td>
-                <td><strong>+ &pound;75 /mo</strong></td>
+                <td data-label="What's included">Professional lead magnet PDF (written and designed), gated landing page with conversion-optimised copy, 6-email automated nurture sequence (written and configured), lead tracking dashboard replacing current contacts database.</td>
+                <td data-label="Monthly"><strong>+ &pound;75 /mo</strong></td>
               </tr>
             </tbody>
           </table>
@@ -752,45 +777,45 @@
             <tbody>
               <tr>
                 <td><strong>Monthly cost</strong></td>
-                <td>&pound;295</td>
-                <td>&pound;375</td>
-                <td class="col-highlight"><strong>&pound;535</strong></td>
+                <td data-label="Option A — Current site">&pound;295</td>
+                <td data-label="Option B — Rebuild">&pound;375</td>
+                <td class="col-highlight" data-label="Option B + Both"><strong>&pound;535</strong></td>
               </tr>
               <tr>
                 <td><strong>vs. current &pound;197/mo</strong></td>
-                <td>+&pound;98</td>
-                <td>+&pound;178</td>
-                <td class="col-highlight">+&pound;338</td>
+                <td data-label="Option A — Current site">+&pound;98</td>
+                <td data-label="Option B — Rebuild">+&pound;178</td>
+                <td class="col-highlight" data-label="Option B + Both">+&pound;338</td>
               </tr>
               <tr>
                 <td><strong>New website</strong></td>
-                <td>—</td>
-                <td>&#10003;</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="Option A — Current site">—</td>
+                <td data-label="Option B — Rebuild">&#10003;</td>
+                <td class="col-highlight" data-label="Option B + Both">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>Professional copy</strong></td>
-                <td>—</td>
-                <td>&#10003;</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="Option A — Current site">—</td>
+                <td data-label="Option B — Rebuild">&#10003;</td>
+                <td class="col-highlight" data-label="Option B + Both">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>Recruitment system</strong></td>
-                <td>—</td>
-                <td>Optional</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="Option A — Current site">—</td>
+                <td data-label="Option B — Rebuild">Optional</td>
+                <td class="col-highlight" data-label="Option B + Both">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>Sales funnel</strong></td>
-                <td>—</td>
-                <td>Optional</td>
-                <td class="col-highlight">&#10003;</td>
+                <td data-label="Option A — Current site">—</td>
+                <td data-label="Option B — Rebuild">Optional</td>
+                <td class="col-highlight" data-label="Option B + Both">&#10003;</td>
               </tr>
               <tr>
                 <td><strong>After 24 months</strong></td>
-                <td>&pound;295</td>
-                <td>&pound;275</td>
-                <td class="col-highlight"><strong>&pound;350</strong></td>
+                <td data-label="Option A — Current site">&pound;295</td>
+                <td data-label="Option B — Rebuild">&pound;275</td>
+                <td class="col-highlight" data-label="Option B + Both"><strong>&pound;350</strong></td>
               </tr>
             </tbody>
           </table>
@@ -822,28 +847,28 @@
             <tbody>
               <tr>
                 <td><strong>Kick-off</strong></td>
-                <td>Confirm scope, gather brand assets, finalise copy review process</td>
-                <td>Week 1</td>
+                <td data-label="What happens">Confirm scope, gather brand assets, finalise copy review process</td>
+                <td data-label="Timeframe">Week 1</td>
               </tr>
               <tr>
                 <td><strong>Copy &amp; Content</strong></td>
-                <td>Finalise all page copy, write lead magnet and emails (if included)</td>
-                <td>Weeks 2–3</td>
+                <td data-label="What happens">Finalise all page copy, write lead magnet and emails (if included)</td>
+                <td data-label="Timeframe">Weeks 2–3</td>
               </tr>
               <tr>
                 <td><strong>Design &amp; Build</strong></td>
-                <td>Build all pages, integrate recruitment system (if included), configure email automation</td>
-                <td>Weeks 3–6</td>
+                <td data-label="What happens">Build all pages, integrate recruitment system (if included), configure email automation</td>
+                <td data-label="Timeframe">Weeks 3–6</td>
               </tr>
               <tr>
                 <td><strong>Review &amp; Testing</strong></td>
-                <td>Your team reviews, we refine. Mobile, browser, and form testing</td>
-                <td>Weeks 6–7</td>
+                <td data-label="What happens">Your team reviews, we refine. Mobile, browser, and form testing</td>
+                <td data-label="Timeframe">Weeks 6–7</td>
               </tr>
               <tr>
                 <td><strong>Launch</strong></td>
-                <td>Go live, redirect old URLs, monitor performance</td>
-                <td>Week 8</td>
+                <td data-label="What happens">Go live, redirect old URLs, monitor performance</td>
+                <td data-label="Timeframe">Week 8</td>
               </tr>
             </tbody>
           </table>
