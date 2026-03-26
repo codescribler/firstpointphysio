@@ -265,6 +265,86 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+
+    /* ═══ STAKES ═══ */
+    .stakes-content { max-width: 680px; }
+    .stakes-content h2 {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.025em;
+      color: var(--navy); margin-bottom: 24px;
+    }
+    .stakes-content p { font-size: 17px; line-height: 1.85; color: var(--text-2); margin-bottom: 20px; }
+    .stakes-content p:last-child { margin-bottom: 0; }
+
+    /* ═══ BENEFITS ═══ */
+    .benefits-header { max-width: 600px; margin-bottom: 64px; }
+    .benefits-header h2 {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.025em;
+      color: var(--navy); margin-bottom: 16px;
+    }
+    .benefits-header p { font-size: 17px; color: var(--text-muted); line-height: 1.75; }
+
+    .benefits-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; }
+    .benefits-grid > :nth-child(2) { grid-row: 1 / 3; }
+
+    .benefit-card {
+      padding: 40px 32px; background: var(--white);
+      border: 1px solid var(--border-light); border-radius: var(--r-xl);
+      transition: all 0.4s var(--ease); position: relative; overflow: hidden;
+    }
+    .benefit-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      transform: scaleX(0); transition: transform 0.4s var(--ease); transform-origin: left;
+    }
+    .benefit-card:hover {
+      border-color: transparent; transform: translateY(-4px);
+      box-shadow: 0 20px 48px var(--shadow-lg);
+    }
+    .benefit-card:hover::before { transform: scaleX(1); }
+
+    .benefit-icon {
+      width: 52px; height: 52px; border-radius: var(--r-lg);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+    }
+    .benefit-icon svg { width: 26px; height: 26px; stroke-width: 1.8; }
+    .bi-1 { background: rgba(19,92,160,0.08); } .bi-1 svg { stroke: var(--blue); }
+    .bi-2 { background: rgba(63,123,240,0.08); } .bi-2 svg { stroke: var(--blue-bright); }
+    .bi-3 { background: rgba(86,174,255,0.08); } .bi-3 svg { stroke: var(--sky); }
+    .bi-4 { background: rgba(176,212,223,0.2); } .bi-4 svg { stroke: var(--blue); }
+
+    .benefit-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .benefit-card p { font-size: 15px; line-height: 1.7; color: var(--text-2); }
+
+    @media (max-width: 900px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .benefits-grid > :nth-child(2) { grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .benefit-card { padding: 28px 24px; }
+    }
+
+    /* ═══ GUIDE ═══ */
+    .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .guide-empathy h2 {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.025em;
+      color: var(--navy); margin-bottom: 24px;
+    }
+    .guide-empathy p { font-size: 17px; line-height: 1.85; color: var(--text-2); margin-bottom: 20px; }
+
+    .guide-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .guide-stat {
+      padding: 28px 24px; border-top: 2px solid var(--border-light);
+    }
+    .guide-stat:nth-child(odd) { border-right: 2px solid var(--border-light); }
+    .guide-stat-num {
+      font-family: var(--heading); font-size: clamp(36px, 5vw, 52px); font-weight: 800;
+      color: var(--blue); line-height: 1; margin-bottom: 8px; letter-spacing: -0.03em;
+    }
+    .guide-stat-label { font-size: 14px; color: var(--text-muted); line-height: 1.5; font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .guide-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
   </style>
 </head>
 <body>
@@ -360,6 +440,95 @@
       <span class="marquee-divider">/</span>
     </div>
   </div>
+
+  <!-- ═══ STAKES ═══ -->
+  <section class="section" id="stakes">
+    <div class="container">
+      <div class="stakes-content">
+        <div class="badge reveal" style="margin-bottom: 20px;">The Challenge</div>
+        <h2 class="reveal d1">Sound Familiar?</h2>
+        <p class="reveal d2">Your GPs are spending up to a third of their day on musculoskeletal cases they shouldn't need to see. You know ARRS funding could pay for a First Contact Practitioner — but recruiting one is a nightmare. The last time you tried, the role sat empty for months.</p>
+        <p class="reveal d3">When you did find someone through a large provider, you got rotating clinicians, impersonal account management, and issues that took weeks to resolve. Meanwhile, patients wait longer, GPs burn out faster, and funding that should be transforming your service sits unused.</p>
+        <p class="reveal d4">You don't need another faceless provider. You need a partner who knows your practice by name.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BENEFITS ═══ -->
+  <section class="section section--teal" id="benefits">
+    <div class="container">
+      <div class="benefits-header reveal">
+        <div class="badge" style="margin-bottom: 20px;">The Difference</div>
+        <h2>What Changes When You Work With Us</h2>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card reveal d1">
+          <div class="benefit-icon bi-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>GP Time Reclaimed</h3>
+          <p>MSK patients are seen by a specialist physiotherapist, not your GPs. That means dozens of freed-up appointments every week for complex patients who actually need a doctor.</p>
+        </div>
+
+        <div class="benefit-card reveal d2" style="display:flex;flex-direction:column;justify-content:center;">
+          <div class="benefit-icon bi-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3>ARRS Funding Put to Work</h3>
+          <p>Your FCP is fully funded through ARRS. We help you make the most of your allocation — no wasted budget, no clawback risk. The service cost is completely refundable within the scheme.</p>
+        </div>
+
+        <div class="benefit-card reveal d3">
+          <div class="benefit-icon bi-3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Zero Operational Burden</h3>
+          <p>We recruit, supervise, train, and provide cover. You don't manage rotas, chase locums, or handle HR. It's fully managed — that's the whole point.</p>
+        </div>
+
+        <div class="benefit-card reveal d4" style="grid-column: 1 / -1;">
+          <div class="benefit-icon bi-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>A Partner, Not a Provider</h3>
+          <p>We're a small, agile team. The director answers his phone. We know your practice by name. Issues get resolved the same day, not escalated through three tiers of account management. That's the difference between a partner and a provider.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GUIDE ═══ -->
+  <section class="section" id="guide">
+    <div class="container">
+      <div class="guide-grid">
+        <div class="guide-empathy reveal">
+          <div class="badge" style="margin-bottom: 20px;">Your Partner</div>
+          <h2>We Know What It's Like</h2>
+          <p>Running a PCN means balancing clinical quality, operational demands, and funding requirements — often with a team that's already stretched. Adding FCP recruitment to that list shouldn't feel like another full-time job.</p>
+          <p>We built First Point Physio because we believe practices deserve a partner who genuinely takes the burden off — not one who adds to it. We've been doing this since 2017, and we're still small enough to care about every practice we work with.</p>
+        </div>
+        <div class="guide-stats reveal d2">
+          <div class="guide-stat">
+            <div class="guide-stat-num">87%</div>
+            <div class="guide-stat-label">of patients managed within the service — no onward referral needed</div>
+          </div>
+          <div class="guide-stat">
+            <div class="guide-stat-num">98%</div>
+            <div class="guide-stat-label">appointment utilisation rate across all clinics</div>
+          </div>
+          <div class="guide-stat">
+            <div class="guide-stat-num">94%</div>
+            <div class="guide-stat-label">of patients would recommend the FCP service to others</div>
+          </div>
+          <div class="guide-stat">
+            <div class="guide-stat-num">80%</div>
+            <div class="guide-stat-label">didn't need to visit their GP for the same problem again</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
   (function() {
