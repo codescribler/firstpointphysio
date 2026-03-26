@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "vrk75sz9cy");
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Fully managed First Contact Practitioners for your PCN. 50+ clinicians, 120+ GP surgeries, since 2017. Small team. Big impact. Zero hassle.">
 <title>First Point Physio | Managed FCP Services for Primary Care</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +25,7 @@
   --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
   --radius:20px;
 }
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
 body{
   font-family:'Poppins',sans-serif;font-weight:400;
   background:var(--navy);color:var(--text-on-dark);
@@ -74,6 +68,18 @@ h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif;line-height:1.1}
 .mobile-menu a{font-family:'Outfit',sans-serif;font-size:28px;font-weight:300;color:rgba(255,255,255,0.7)}
 .mobile-menu a:hover{color:#fff}
 body.menu-open{overflow:hidden}
+.nav-cta{
+  height:44px;padding:0 24px;border-radius:10px;
+  background:var(--blue-bright);color:#fff;
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all 0.3s var(--ease-out-expo);
+  box-shadow:0 2px 12px rgba(63,123,240,0.2);
+  border:1px solid rgba(255,255,255,0.12);
+}
+.nav-cta:hover{box-shadow:0 4px 20px rgba(63,123,240,0.35);transform:translateY(-1px)}
+.nav-cta svg{width:14px;height:14px;transition:transform 0.3s}
+.nav-cta:hover svg{transform:translateX(2px)}
 
 /* === HERO === */
 .hero{
@@ -207,10 +213,12 @@ body.menu-open{overflow:hidden}
 }
 .problem-ghost{
   font-family:'Outfit',sans-serif;
-  font-size:clamp(40px,7vw,80px);font-weight:300;
-  color:rgba(255,255,255,0.08);
-  line-height:1;margin-bottom:-40px;
-  position:relative;z-index:0;
+  font-size:clamp(60px,10vw,140px);font-weight:800;
+  color:rgba(255,255,255,0.03);
+  line-height:0.9;
+  position:absolute;top:100px;left:40px;right:40px;
+  z-index:0;pointer-events:none;
+  letter-spacing:-0.04em;
 }
 .problem-content{
   position:relative;z-index:1;max-width:600px;
@@ -225,6 +233,7 @@ body.menu-open{overflow:hidden}
 /* === BENEFITS === */
 .benefits{
   position:relative;padding:140px 0;overflow:hidden;
+  background:linear-gradient(180deg, var(--navy) 0%, rgba(19,92,160,0.06) 50%, var(--navy) 100%);
 }
 .benefits-layout{display:grid;grid-template-columns:55% 45%;gap:40px;align-items:start}
 .benefits-heading{
@@ -298,7 +307,7 @@ body.menu-open{overflow:hidden}
 .process-cta{margin-top:60px;text-align:center}
 
 /* === APART (SPOTLIGHT CARDS) === */
-.apart{padding:140px 0}
+.apart{padding:140px 0;background:linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%)}
 .apart-heading{
   font-size:clamp(32px,5vw,56px);font-weight:300;
   color:#fff;margin-bottom:60px;letter-spacing:-0.03em;
@@ -307,11 +316,10 @@ body.menu-open{overflow:hidden}
 .apart-heading strong{font-weight:700}
 .apart-grid{
   display:grid;
-  grid-template-columns:1.5fr 1fr;
+  grid-template-columns:1.2fr 0.8fr;
   grid-template-rows:auto auto;
   gap:24px;
 }
-.apart-grid .spotlight-card:first-child{grid-row:1 / 3}
 .spotlight-card{
   position:relative;overflow:hidden;
   background:var(--navy-surface);border:1px solid rgba(255,255,255,0.06);
@@ -343,8 +351,9 @@ body.menu-open{overflow:hidden}
   color:#fff;margin-bottom:12px;
 }
 .card-desc{font-size:14px;font-weight:300;color:var(--text-muted-dark);line-height:1.7}
+.apart-grid .spotlight-card:first-child{grid-column:1 / -1}
 .spotlight-card:first-child .card-title{font-size:24px}
-.spotlight-card:first-child .card-desc{font-size:15px}
+.spotlight-card:first-child .card-desc{font-size:15px;max-width:680px}
 
 /* === SERVICE === */
 .service{padding:140px 0;background:var(--navy-surface)}
@@ -499,11 +508,11 @@ body.menu-open{overflow:hidden}
       <li><a href="#benefits">Benefits</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#apart">Why Us</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#footer-cta">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta btn-magnetic" style="height:44px;padding:0 24px;border-radius:10px;background:var(--blue-bright);color:#fff;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s var(--ease-out-expo);box-shadow:0 2px 12px rgba(63,123,240,0.2);">
+    <a href="#footer-cta" class="nav-cta">
       Get in Touch
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -516,8 +525,13 @@ body.menu-open{overflow:hidden}
   <a href="#benefits" class="mobile-link">Benefits</a>
   <a href="#process" class="mobile-link">Process</a>
   <a href="#apart" class="mobile-link">Why Us</a>
-  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#footer-cta" class="mobile-link">Contact</a>
+  <a href="#footer-cta" class="btn-magnetic" style="margin-top:20px;width:80%;max-width:320px;justify-content:center;">Get in Touch</a>
 </div>
+
+<svg class="grain" aria-hidden="true"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+
+<main>
 
 <!-- HERO -->
 <section class="hero">
@@ -534,12 +548,12 @@ body.menu-open{overflow:hidden}
       <p class="hero-text reveal">Embedded First Contact Practitioners who know your practice, your patients, and your team. Fully managed. Zero burden.</p>
       <div class="hero-ctas reveal">
         <div class="btn-magnetic-wrap">
-          <a href="#contact" class="btn-magnetic">
+          <a href="#footer-cta" class="btn-magnetic">
             Get in Touch
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
-        <a href="#" class="btn-ghost">Download Case Study</a>
+        <a href="#case-study" class="btn-ghost">Download Case Study</a>
       </div>
       <div class="hero-stats reveal">
         <div class="hero-stat">
@@ -588,9 +602,9 @@ body.menu-open{overflow:hidden}
 <!-- PROBLEM -->
 <section class="problem">
   <div class="container">
-    <div class="problem-ghost reveal-s" aria-hidden="true">Sound Familiar?</div>
+    <div class="problem-ghost" aria-hidden="true">Sound Familiar?</div>
     <div class="problem-content">
-      <h2 class="reveal" style="font-family:'Outfit',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--sky);margin-bottom:32px;letter-spacing:-0.03em;">Sound Familiar?</h2>
+      <h2 class="reveal" style="font-family:'Outfit',sans-serif;font-size:clamp(28px,4.5vw,48px);font-weight:700;color:var(--sky);margin-bottom:32px;letter-spacing:-0.03em;">Sound Familiar?</h2>
       <p class="reveal">Your GPs are drowning in MSK referrals. Every stiff shoulder, sore knee, and aching back lands on a doctor who should be managing complex conditions. Meanwhile, your ARRS funding sits underused because finding the right FCP feels impossible.</p>
       <p class="reveal">The large providers send whoever is available. Clinicians rotate every few months. When something goes wrong, you wait days for a response from someone who has never set foot in your practice.</p>
       <p class="reveal"><span class="highlight">You need a partner who knows your practice by name.</span> Someone who answers the phone, fixes problems the same day, and treats your patients as if they were their own.</p>
@@ -625,7 +639,7 @@ body.menu-open{overflow:hidden}
           <p class="benefit-desc">Named contacts who know your practice. Same-day responses. Clinicians who stay. This is what a real partnership looks like.</p>
         </div>
       </div>
-      <div class="benefits-watermark reveal-s">87%</div>
+      <div class="benefits-watermark" aria-hidden="true">87%</div>
     </div>
   </div>
 </section>
@@ -636,19 +650,19 @@ body.menu-open{overflow:hidden}
     <div class="stats-grid">
       <div class="reveal-s">
         <div class="stat-number"><span class="counter" data-target="87">0</span><span class="stat-pct">%</span></div>
-        <p class="stat-label">In-Service Rate</p>
+        <p class="stat-label">Managed in-service without onward referral</p>
       </div>
       <div class="reveal-s">
         <div class="stat-number"><span class="counter" data-target="98">0</span><span class="stat-pct">%</span></div>
-        <p class="stat-label">Practice Satisfaction</p>
+        <p class="stat-label">Appointment utilisation across all clinics</p>
       </div>
       <div class="reveal-s">
         <div class="stat-number"><span class="counter" data-target="94">0</span><span class="stat-pct">%</span></div>
-        <p class="stat-label">Patient Satisfaction</p>
+        <p class="stat-label">Would recommend the FCP service to others</p>
       </div>
       <div class="reveal-s">
         <div class="stat-number"><span class="counter" data-target="80">0</span><span class="stat-pct">%</span></div>
-        <p class="stat-label">Managed Without Referral</p>
+        <p class="stat-label">No GP follow-up needed for the same problem</p>
       </div>
     </div>
     <p class="stats-source reveal">Source: First Point Physio internal performance data, 2024-2025</p>
@@ -682,7 +696,7 @@ body.menu-open{overflow:hidden}
     </div>
     <div class="process-cta reveal">
       <div class="btn-magnetic-wrap">
-        <a href="#contact" class="btn-magnetic">
+        <a href="#footer-cta" class="btn-magnetic">
           Start the Conversation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -736,62 +750,64 @@ body.menu-open{overflow:hidden}
       <ul class="checklist">
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          FCP recruitment and credentialing
+          Qualified Band 7+ FCP placed in your practice
         </li>
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Clinical supervision and governance
+          Full recruitment and vetting — you don't lift a finger
         </li>
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          IT and systems integration
+          Clinical supervision and ongoing CPD for every clinician
         </li>
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          HR, payroll and employment management
+          Holiday cover and sickness cover as standard
         </li>
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          CPD-accredited ongoing training
+          Monthly outcome and activity reporting bespoke to your PCN
         </li>
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Absence and cover management
+          ARRS-funding aligned — one transparent price, fully refundable
         </li>
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Monthly performance reporting
+          Flexible engagement — stay because you want to, not because you're locked in
         </li>
         <li class="reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Named account manager and clinical lead
+          Face-to-face, telephone, online, or enhanced access — whatever your practice needs
         </li>
       </ul>
       <div class="arrs-card reveal-r">
-        <h3>ARRS Funding</h3>
-        <p>First Contact Practitioners are fully fundable through the Additional Roles Reimbursement Scheme. We handle the entire process, ensuring your allocation is used effectively and compliantly.</p>
-        <p>No cost to the practice. No financial risk. Just better patient care and more GP capacity.</p>
+        <h3>Fully Funded Within ARRS</h3>
+        <p>Our service is fully encompassed in our pricing and is completely refundable within the limits of the Additional Roles Reimbursement Scheme. We handle the entire process, ensuring your allocation is used effectively and compliantly.</p>
+        <p style="margin-top:20px;padding:16px 20px;background:rgba(255,255,255,0.04);border-radius:12px;font-weight:500;color:var(--sky);font-size:14px;border:1px solid rgba(86,174,255,0.1);">100% refundable within ARRS limits</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CASE STUDY CTA -->
-<section class="case-cta" id="contact">
+<section class="case-cta" id="case-study">
   <div class="container">
     <div class="case-cta-inner">
-      <h2 class="reveal">Ready to Free Up Your GPs?</h2>
-      <p class="reveal">Get in touch and we will show you exactly how we can help your practice. No obligation, no sales pitch.</p>
-      <div class="email-form reveal">
-        <input type="email" placeholder="Your email address" aria-label="Email address">
-        <button type="button">Get in Touch</button>
-      </div>
+      <h2 class="reveal">See the Results for Yourself</h2>
+      <p class="reveal">Download our case study showing how a PCN freed up GP time and put ARRS funding to work with First Point Physio.</p>
+      <form class="email-form reveal" onsubmit="return false;">
+        <input type="email" placeholder="Your work email address" required aria-label="Work email address">
+        <button type="submit">Download</button>
+      </form>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" id="footer-cta">
   <div class="container">
     <div class="footer-top">
       <div class="footer-cta">
@@ -979,6 +995,5 @@ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window,document,"clarity","script","vrk75sz9cy");
 </script>
-
 </body>
 </html>
