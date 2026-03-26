@@ -118,7 +118,23 @@ body.menu-open{overflow:hidden}
   0%,100%{transform:translate(0,0) scale(1)}
   50%{transform:translate(20%,-20%) scale(1.1)}
 }
-.hero-content{position:relative;z-index:1;max-width:700px}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;
+  align-items:center;position:relative;z-index:1;
+}
+.hero-content{max-width:700px}
+.hero-visual{
+  position:relative;border-radius:24px;overflow:hidden;
+  aspect-ratio:4/3;
+  box-shadow:0 32px 64px rgba(4,28,64,0.4);
+  border:1px solid rgba(255,255,255,0.06);
+}
+.hero-visual img{width:100%;height:100%;object-fit:cover}
+.hero-visual::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(4,28,64,0.4) 100%);
+  pointer-events:none;
+}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
   padding:8px 20px;border-radius:100px;
@@ -254,12 +270,21 @@ body.menu-open{overflow:hidden}
   color:#fff;margin-bottom:10px;
 }
 .benefit-desc{font-size:15px;font-weight:300;color:var(--text-muted-dark);line-height:1.7;max-width:440px}
-.benefits-watermark{
-  font-family:'Outfit',sans-serif;font-size:clamp(120px,18vw,240px);
-  font-weight:800;color:rgba(255,255,255,0.04);
-  line-height:1;text-align:right;
-  position:sticky;top:200px;
+.benefits-image{
+  position:sticky;top:140px;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 24px 48px rgba(4,28,64,0.3);
+  border:1px solid rgba(255,255,255,0.06);
 }
+.benefits-image img{width:100%;height:auto;display:block}
+.benefits-image .img-placeholder{
+  aspect-ratio:3/4;
+  background:linear-gradient(135deg, var(--navy-surface), var(--navy-mid));
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+  color:rgba(255,255,255,0.2);font-size:13px;font-family:'Outfit',sans-serif;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.benefits-image .img-placeholder svg{width:32px;height:32px;stroke:rgba(255,255,255,0.15)}
 
 /* === STATS === */
 .stats{
@@ -284,6 +309,21 @@ body.menu-open{overflow:hidden}
 
 /* === PROCESS === */
 .process{padding:140px 0;background:var(--navy-mid)}
+.process-layout{display:grid;grid-template-columns:1fr 0.7fr;gap:64px;align-items:center}
+.process-image{
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 24px 48px rgba(4,28,64,0.3);
+  border:1px solid rgba(255,255,255,0.06);
+}
+.process-image img{width:100%;height:auto;display:block}
+.process-image .img-placeholder{
+  aspect-ratio:3/4;
+  background:linear-gradient(135deg, var(--navy-surface), var(--navy));
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+  color:rgba(255,255,255,0.2);font-size:13px;font-family:'Outfit',sans-serif;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.process-image .img-placeholder svg{width:32px;height:32px;stroke:rgba(255,255,255,0.15)}
 .process-heading{
   font-size:clamp(32px,5vw,56px);font-weight:300;
   color:#fff;margin-bottom:80px;letter-spacing:-0.03em;
@@ -448,11 +488,15 @@ body.menu-open{overflow:hidden}
   .nav-links,.nav-cta{display:none}
   .nav-toggle{display:flex}
   .hero{padding:120px 0 60px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-visual{max-height:400px}
   .hero-stats{flex-direction:column;gap:16px}
   .hero-stat{border-left:none;padding:0;flex-direction:row;gap:8px}
   .benefits-layout{grid-template-columns:1fr}
   .benefits-watermark{display:none}
   .stats-grid{grid-template-columns:repeat(2,1fr);gap:48px 24px}
+  .process-layout{grid-template-columns:1fr}
+  .process-image{display:none}
   .process-step{grid-template-columns:80px 1fr;gap:24px}
   .apart-grid{grid-template-columns:1fr;grid-template-rows:auto}
   .apart-grid .spotlight-card:first-child{grid-row:auto}
@@ -608,37 +652,42 @@ body.menu-open{overflow:hidden}
     <div class="mesh-blob mesh-blob-3"></div>
   </div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge reveal">Managed FCP Services</div>
-      <h1 class="hero-headline reveal">Free Up<br>Your GPs.</h1>
-      <p class="hero-sub reveal">We Handle MSK.</p>
-      <p class="hero-text reveal">Embedded First Contact Practitioners who know your practice, your patients, and your team. Fully managed. Zero burden.</p>
-      <div class="hero-ctas reveal">
-        <div class="btn-magnetic-wrap">
-          <a href="#" class="btn-magnetic demo-link">
-            Get in Touch
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge reveal">Managed FCP Services</div>
+        <h1 class="hero-headline reveal">Free Up<br>Your GPs.</h1>
+        <p class="hero-sub reveal">We Handle MSK.</p>
+        <p class="hero-text reveal">Embedded First Contact Practitioners who know your practice, your patients, and your team. Fully managed. Zero burden.</p>
+        <div class="hero-ctas reveal">
+          <div class="btn-magnetic-wrap">
+            <a href="#" class="btn-magnetic demo-link">
+              Get in Touch
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+          <a href="#" class="btn-ghost demo-link">Download Case Study</a>
         </div>
-        <a href="#" class="btn-ghost demo-link">Download Case Study</a>
+        <div class="hero-stats reveal">
+          <div class="hero-stat">
+            <span class="hero-stat-val">Since 2017</span>
+            <span class="hero-stat-label">Established</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-val">50+</span>
+            <span class="hero-stat-label">Clinicians</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-val">120+</span>
+            <span class="hero-stat-label">Surgeries</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-val">87%</span>
+            <span class="hero-stat-label">In-Service</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats reveal">
-        <div class="hero-stat">
-          <span class="hero-stat-val">Since 2017</span>
-          <span class="hero-stat-label">Established</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-val">50+</span>
-          <span class="hero-stat-label">Clinicians</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-val">120+</span>
-          <span class="hero-stat-label">Surgeries</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-val">87%</span>
-          <span class="hero-stat-label">In-Service</span>
-        </div>
+      <div class="hero-visual reveal">
+        <img src="images/hero-image-healthy-female-runner.webp" alt="Physiotherapist consulting with a patient in a GP practice" width="600" height="450">
       </div>
     </div>
   </div>
@@ -706,7 +755,12 @@ body.menu-open{overflow:hidden}
           <p class="benefit-desc">Named contacts who know your practice. Same-day responses. Clinicians who stay. This is what a real partnership looks like.</p>
         </div>
       </div>
-      <div class="benefits-watermark" aria-hidden="true">87%</div>
+      <div class="benefits-image reveal-r">
+        <div class="img-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Team photo or<br>FCP in practice
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -740,25 +794,35 @@ body.menu-open{overflow:hidden}
 <section class="process" id="process">
   <div class="container">
     <h2 class="process-heading reveal"><strong>The Process</strong><br>Is Simple</h2>
-    <div class="process-step reveal-l">
-      <div class="step-num">01</div>
+    <div class="process-layout">
       <div>
-        <h3 class="step-title">Get in Touch</h3>
-        <p class="step-desc">A short conversation to understand your practice, patient volume, and what you need from an FCP service. No sales pitch. No pressure.</p>
+        <div class="process-step reveal-l">
+          <div class="step-num">01</div>
+          <div>
+            <h3 class="step-title">Get in Touch</h3>
+            <p class="step-desc">A short conversation to understand your practice, patient volume, and what you need from an FCP service. No sales pitch. No pressure.</p>
+          </div>
+        </div>
+        <div class="process-step reveal-l">
+          <div class="step-num">02</div>
+          <div>
+            <h3 class="step-title">We Handle Everything</h3>
+            <p class="step-desc">Recruitment, credentialing, clinical supervision, IT setup, compliance. We manage the entire pipeline so you can stay focused on your practice.</p>
+          </div>
+        </div>
+        <div class="process-step reveal-l">
+          <div class="step-num">03</div>
+          <div>
+            <h3 class="step-title">Your GPs Focus on What Matters</h3>
+            <p class="step-desc">Within weeks, a dedicated FCP is embedded in your practice. MSK demand drops. GP capacity opens up. Patients get faster, better care.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="process-step reveal-l">
-      <div class="step-num">02</div>
-      <div>
-        <h3 class="step-title">We Handle Everything</h3>
-        <p class="step-desc">Recruitment, credentialing, clinical supervision, IT setup, compliance. We manage the entire pipeline so you can stay focused on your practice.</p>
-      </div>
-    </div>
-    <div class="process-step reveal-l">
-      <div class="step-num">03</div>
-      <div>
-        <h3 class="step-title">Your GPs Focus on What Matters</h3>
-        <p class="step-desc">Within weeks, a dedicated FCP is embedded in your practice. MSK demand drops. GP capacity opens up. Patients get faster, better care.</p>
+      <div class="process-image reveal-r">
+        <div class="img-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          FCP working in<br>a GP surgery
+        </div>
       </div>
     </div>
     <div class="process-cta reveal">
