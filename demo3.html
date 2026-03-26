@@ -760,6 +760,193 @@
     .demo-actions .btn { justify-content: center; width: 100%; }
 
     /* ========================================
+       PROCESS SECTION
+    ======================================== */
+    .process { padding: 140px 0; background: var(--white); position: relative; }
+    .process-layout { display: grid; grid-template-columns: 1fr 0.7fr; gap: 64px; align-items: center; }
+    .process-step { display: grid; grid-template-columns: 80px 1fr; gap: 24px; padding: 48px 0; border-top: 1px solid var(--border); align-items: start; }
+    .step-num { font-family: var(--heading); font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: rgba(63,123,240,0.15); line-height: 1; }
+    .step-title { font-family: var(--heading); font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .step-desc { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 460px; }
+    .process-cta { margin-top: 48px; }
+
+    .dots-process::before { top: -12px; right: -20px; }
+    .dots-process::after { top: 2px; right: -34px; }
+
+    /* ========================================
+       BLUE ICON CARDS (WHAT SETS US APART)
+    ======================================== */
+    .apart { padding: 140px 0; background: var(--teal-bg); position: relative; }
+    .apart-header { max-width: 560px; margin-bottom: 64px; }
+    .apart h2 { color: var(--navy); margin-bottom: 16px; }
+    .apart-header p { font-size: 16px; color: var(--text-muted); }
+
+    .apart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .apart-grid > :first-child { grid-column: 1 / -1; }
+
+    .blue-card {
+      position: relative; overflow: hidden;
+      background: var(--blue-bright);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius); padding: 36px 32px;
+      transition: all 0.4s var(--ease);
+      color: var(--white);
+    }
+    .blue-card::before {
+      content: ''; position: absolute; inset: -1px;
+      background: radial-gradient(250px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255,255,255,0.15), transparent 60%);
+      border-radius: inherit; z-index: 0; opacity: 0;
+      transition: opacity 0.4s; pointer-events: none;
+    }
+    .blue-card:hover::before { opacity: 1; }
+    .blue-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(19,92,160,0.25);
+    }
+    .blue-card > * { position: relative; z-index: 1; }
+    .blue-card-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .blue-card-icon svg { width: 26px; height: 26px; stroke: white; stroke-width: 1.8; fill: none; }
+    .blue-card h3 { font-family: var(--heading); font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+    .blue-card p { font-size: 14px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.8); }
+    .apart-grid > .blue-card:first-child h3 { font-size: 24px; }
+    .apart-grid > .blue-card:first-child p { font-size: 15px; max-width: 640px; }
+
+    .dots-apart::before { top: -16px; left: -28px; }
+    .dots-apart::after { top: -6px; left: -44px; }
+
+    /* ========================================
+       SERVICE OVERVIEW
+    ======================================== */
+    .service { padding: 140px 0; background: var(--white); position: relative; }
+    .service-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: start; }
+    .service h2 { color: var(--navy); margin-bottom: 40px; }
+    .checklist { display: flex; flex-direction: column; gap: 20px; }
+    .checklist-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 15px; font-weight: 400; color: var(--text-2); line-height: 1.7;
+    }
+    .checklist-item svg {
+      width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;
+      stroke: var(--blue-bright); fill: none;
+    }
+    .arrs-card {
+      background: var(--teal-soft);
+      border: 1px solid rgba(176,212,223,0.3);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+    }
+    .arrs-card h3 { font-family: var(--heading); font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 16px; }
+    .arrs-card p { font-size: 15px; color: var(--text-2); line-height: 1.75; margin-bottom: 24px; }
+    .arrs-highlight {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--blue);
+      text-align: center;
+    }
+
+    .dots-service::before { top: 8px; right: -24px; }
+    .dots-service::after { top: 24px; right: -36px; }
+
+    /* ========================================
+       CASE STUDY CTA
+    ======================================== */
+    .case-study { padding: 140px 0; background: var(--navy); position: relative; }
+    .case-study-inner { max-width: 540px; margin: 0 auto; text-align: center; }
+    .case-study-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius-full);
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6);
+      margin-bottom: 28px;
+    }
+    .case-study h2 { color: var(--white); margin-bottom: 16px; }
+    .case-study-sub { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 40px; }
+    .case-study-form {
+      display: flex; gap: 12px;
+    }
+    .case-study-form input {
+      flex: 1; padding: 16px 20px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-full);
+      color: var(--white);
+      font-family: var(--body); font-size: 15px; font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .case-study-form input::placeholder { color: rgba(255,255,255,0.35); }
+    .case-study-form input:focus {
+      border-color: var(--blue-bright);
+      box-shadow: 0 0 0 3px var(--blue-glow);
+    }
+    .case-study-form button {
+      padding: 16px 32px;
+      background: var(--blue-bright);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-family: var(--body); font-size: 15px; font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 16px var(--blue-glow);
+      transition: all 0.4s var(--ease);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .case-study-form button:hover {
+      background: var(--blue-hover);
+      box-shadow: 0 8px 32px rgba(63,123,240,0.25);
+      transform: translateY(-2px);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer { background: var(--navy); padding: 80px 0 0; }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      gap: 48px;
+    }
+    .footer-cta h2 {
+      color: var(--white);
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+    .footer-cta h2 strong { font-weight: 700; }
+    .footer-cta-sub {
+      font-size: 15px; color: rgba(255,255,255,0.4); margin-bottom: 28px;
+    }
+    .footer-contact { text-align: right; }
+    .footer-contact a {
+      display: block;
+      font-size: 15px; color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+      transition: color 0.3s var(--ease);
+    }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 0;
+      font-size: 12px; color: rgba(255,255,255,0.2); font-weight: 300;
+    }
+
+    /* ========================================
        RESPONSIVE
     ======================================== */
     @media (max-width: 900px) {
@@ -792,6 +979,14 @@
       .stat-item:nth-child(1), .stat-item:nth-child(2) {
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
+
+      .process-layout { grid-template-columns: 1fr; }
+      .process-image { display: none; }
+      .apart-grid { grid-template-columns: 1fr; }
+      .apart-grid > :first-child { grid-column: auto; }
+      .service-layout { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; }
+      .footer-contact { text-align: left; }
     }
 
     @media (max-width: 640px) {
@@ -801,7 +996,13 @@
       .hero-ctas { flex-direction: column; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
 
-      .problem, .benefits, .guide { padding: 100px 0; }
+      .problem, .benefits, .guide, .process, .apart, .service, .case-study { padding: 100px 0; }
+
+      .case-study-form { flex-direction: column; }
+      .case-study-form button { width: 100%; }
+      .process-step { grid-template-columns: 1fr; gap: 12px; }
+      .step-num { font-size: 32px; }
+      .footer-bar { flex-direction: column; gap: 8px; text-align: center; }
 
       .stats-grid { grid-template-columns: 1fr; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
@@ -834,6 +1035,7 @@
       .nav, .marquee-band, .demo-overlay { display: none !important; }
       .hero { padding-top: 40px; }
       body { background: white; }
+      .blue-card { background: #3f7bf0 !important; }
     }
   </style>
 </head>
@@ -1044,7 +1246,190 @@
     </div>
   </section>
 
-  <!-- Remaining sections added in next task -->
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="container">
+      <h2 class="dots dots-process reveal">Getting Started Is Simple</h2>
+      <div class="process-layout" style="margin-top: 64px;">
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <span class="step-num">01</span>
+            <div>
+              <div class="step-title">Get in Touch</div>
+              <p class="step-desc">A short conversation about your practice, patient volume, and needs. No pressure.</p>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <span class="step-num">02</span>
+            <div>
+              <div class="step-title">We Handle Everything</div>
+              <p class="step-desc">Recruitment, supervision, training, IT setup, compliance. All managed.</p>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <span class="step-num">03</span>
+            <div>
+              <div class="step-title">Your GPs Focus on What Matters</div>
+              <p class="step-desc">Within weeks, a dedicated FCP is embedded. MSK demand drops. GP capacity opens.</p>
+            </div>
+          </div>
+        </div>
+        <div class="process-image reveal-r">
+          <div class="guide-image-placeholder">
+            <span>FCP working in a GP surgery</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-cta reveal">
+        <a href="#" class="btn btn-primary btn-magnetic demo-link">Start the Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT SETS US APART -->
+  <section class="apart">
+    <div class="container">
+      <div class="apart-header reveal">
+        <h2 class="dots dots-apart">What Sets Us Apart</h2>
+        <p>The things that matter most when you're choosing a clinical partner for your PCN.</p>
+      </div>
+      <div class="apart-grid">
+        <!-- 1: Feature card (spans full width) -->
+        <div class="blue-card reveal">
+          <div class="blue-card-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Personalised Service</h3>
+          <p>Named contacts who know your practice. Same-day responses. The director answers his phone. Real people, not a call centre. When you work with First Point, you're never passed between departments or left waiting on hold. We're small enough to care and experienced enough to deliver.</p>
+        </div>
+        <!-- 2 -->
+        <div class="blue-card reveal">
+          <div class="blue-card-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </div>
+          <h3>Clinical Development</h3>
+          <p>Structured CPD pathways, peer support, clinicians who stay sharp and engaged.</p>
+        </div>
+        <!-- 3 -->
+        <div class="blue-card reveal">
+          <div class="blue-card-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <h3>Performance Reporting</h3>
+          <p>Monthly bespoke reports with clinic-level utilisation, outcomes, and patient feedback.</p>
+        </div>
+        <!-- 4 -->
+        <div class="blue-card reveal">
+          <div class="blue-card-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3>Responsive Communication</h3>
+          <p>Same-day responses. Direct lines. No escalation chains.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE OVERVIEW -->
+  <section class="service">
+    <div class="container">
+      <div class="service-layout">
+        <div class="reveal-l">
+          <h2 class="dots dots-service">Everything Included. One Price.</h2>
+          <div class="checklist">
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Qualified Band 7+ FCP placed in your practice</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Full recruitment and vetting — you don't lift a finger</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Clinical supervision and ongoing CPD for every clinician</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Holiday cover and sickness cover as standard</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Monthly outcome and activity reporting bespoke to your PCN</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>ARRS-funding aligned — one transparent price, fully refundable</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Flexible engagement — stay because you want to</span>
+            </div>
+            <div class="checklist-item">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Face-to-face, telephone, online, or enhanced access</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-r">
+          <div class="arrs-card">
+            <h3>Fully Funded Within ARRS</h3>
+            <p>Our service is designed to sit entirely within your Additional Roles Reimbursement Scheme allocation. No hidden costs, no supplementary invoices. One transparent price that your PCN can claim back in full.</p>
+            <div class="arrs-highlight">100% refundable within ARRS limits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY CTA -->
+  <section class="case-study">
+    <div class="container">
+      <div class="case-study-inner reveal">
+        <div class="case-study-badge">See the Evidence</div>
+        <h2>See the Results for Yourself</h2>
+        <p class="case-study-sub">Download our case study showing how a PCN freed up GP time and put ARRS funding to work.</p>
+        <form class="case-study-form" id="caseStudyForm" onsubmit="return false;">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Download</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-cta">
+          <h2>Let's <strong>improve your workload</strong> together</h2>
+          <p class="footer-cta-sub">We respond the same day. Always.</p>
+          <a href="#" class="btn btn-primary btn-magnetic demo-link">Get in Touch</a>
+        </div>
+        <div class="footer-contact">
+          <a href="mailto:info@firstpointphysio.co.uk" class="demo-link">info@firstpointphysio.co.uk</a>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>&copy; 2026 First Point Physio Ltd</span>
+        <span>firstpointphysio.co.uk</span>
+      </div>
+    </div>
+  </footer>
 
   <!-- DEMO MODAL -->
   <div class="demo-overlay" id="demoOverlay">
@@ -1180,6 +1565,23 @@
             btn.style.transform = 'translate(0, 0)';
           });
         });
+      }
+
+      /* ---- Blue card spotlight ---- */
+      if (!prefersReducedMotion) {
+        document.querySelectorAll('.blue-card').forEach(function(card) {
+          card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            card.style.setProperty('--spot-x', (e.clientX - rect.left) + 'px');
+            card.style.setProperty('--spot-y', (e.clientY - rect.top) + 'px');
+          });
+        });
+      }
+
+      /* ---- Case study form ---- */
+      var caseStudyForm = document.getElementById('caseStudyForm');
+      if (caseStudyForm) {
+        caseStudyForm.addEventListener('submit', function(e) { openModal(e); });
       }
 
       /* ---- Marquee kinetic speed ---- */
