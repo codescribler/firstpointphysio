@@ -169,20 +169,77 @@
       background: var(--blue-bright);
       pointer-events: none;
     }
-    .dots::before { width: 12px; height: 12px; opacity: 0.2; }
-    .dots::after { width: 8px; height: 8px; opacity: 0.12; }
+    .dots::before { width: 28px; height: 28px; opacity: 0.12; }
+    .dots::after { width: 18px; height: 18px; opacity: 0.08; }
 
-    .dots-hero-badge::before { top: -8px; right: -20px; }
-    .dots-hero-badge::after { top: 4px; right: -34px; }
+    .dots-hero-badge::before { top: -14px; right: -36px; }
+    .dots-hero-badge::after { top: 8px; right: -58px; }
 
-    .dots-hero-img::before { bottom: 32px; right: -16px; }
-    .dots-hero-img::after { bottom: 16px; right: -28px; }
+    .dots-hero-img::before { bottom: 48px; right: -24px; width: 36px; height: 36px; }
+    .dots-hero-img::after { bottom: 24px; right: -48px; width: 22px; height: 22px; }
 
-    .dots-problem::before { top: -16px; left: -28px; }
-    .dots-problem::after { top: -6px; left: -44px; }
+    .dots-problem::before { top: -20px; left: -44px; width: 32px; height: 32px; }
+    .dots-problem::after { top: -4px; left: -72px; }
 
-    .dots-guide::before { top: 8px; right: -24px; }
-    .dots-guide::after { top: 24px; right: -36px; }
+    .dots-guide::before { top: 4px; right: -40px; width: 32px; height: 32px; }
+    .dots-guide::after { top: 28px; right: -64px; }
+
+    /* ═══ HERO FLOATING DOTS ═══ */
+    .hero-dots { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .hero-dot {
+      position: absolute; border-radius: 50%; background: var(--blue-bright);
+      will-change: transform;
+    }
+    .hero-dot-1 {
+      width: 180px; height: 180px; opacity: 0.04;
+      top: 10%; right: 8%;
+      animation: heroDot1 25s ease-in-out infinite;
+    }
+    .hero-dot-2 {
+      width: 120px; height: 120px; opacity: 0.05;
+      top: 55%; right: 25%;
+      animation: heroDot2 20s ease-in-out infinite;
+    }
+    .hero-dot-3 {
+      width: 80px; height: 80px; opacity: 0.06;
+      top: 30%; left: 45%;
+      animation: heroDot3 30s ease-in-out infinite;
+    }
+    .hero-dot-4 {
+      width: 220px; height: 220px; opacity: 0.025;
+      bottom: -5%; left: -3%;
+      animation: heroDot4 22s ease-in-out infinite;
+    }
+    .hero-dot-5 {
+      width: 60px; height: 60px; opacity: 0.07;
+      top: 20%; left: 30%;
+      animation: heroDot5 18s ease-in-out infinite;
+    }
+    @keyframes heroDot1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(-30px, 20px) scale(1.08); }
+      50% { transform: translate(15px, -25px) scale(0.95); }
+      75% { transform: translate(-20px, -10px) scale(1.05); }
+    }
+    @keyframes heroDot2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(25px, -20px) scale(1.1); }
+      66% { transform: translate(-15px, 30px) scale(0.9); }
+    }
+    @keyframes heroDot3 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(40px, -30px); }
+    }
+    @keyframes heroDot4 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      40% { transform: translate(30px, -20px) scale(1.06); }
+      80% { transform: translate(-20px, 15px) scale(0.97); }
+    }
+    @keyframes heroDot5 {
+      0%, 100% { transform: translate(0, 0); }
+      30% { transform: translate(-20px, 15px); }
+      70% { transform: translate(25px, -20px); }
+    }
 
     /* ========================================
        SCROLL REVEAL
@@ -331,6 +388,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
+      position: relative; z-index: 1;
       gap: 64px;
       align-items: center;
     }
@@ -783,8 +841,8 @@
     .step-desc { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 460px; }
     .process-cta { margin-top: 48px; }
 
-    .dots-process::before { top: -12px; right: -20px; }
-    .dots-process::after { top: 2px; right: -34px; }
+    .dots-process::before { top: -18px; right: -36px; width: 32px; height: 32px; }
+    .dots-process::after { top: 4px; right: -60px; }
 
     /* ========================================
        BLUE ICON CARDS (WHAT SETS US APART)
@@ -833,8 +891,8 @@
     .apart-grid > .blue-card:first-child h3 { font-size: 24px; }
     .apart-grid > .blue-card:first-child p { font-size: 15px; max-width: 640px; }
 
-    .dots-apart::before { top: -16px; left: -28px; }
-    .dots-apart::after { top: -6px; left: -44px; }
+    .dots-apart::before { top: -20px; left: -44px; width: 36px; height: 36px; }
+    .dots-apart::after { top: -2px; left: -72px; width: 22px; height: 22px; }
 
     /* ========================================
        SERVICE OVERVIEW
@@ -869,8 +927,8 @@
       text-align: center;
     }
 
-    .dots-service::before { top: 8px; right: -24px; }
-    .dots-service::after { top: 24px; right: -36px; }
+    .dots-service::before { top: 4px; right: -40px; width: 32px; height: 32px; }
+    .dots-service::after { top: 30px; right: -64px; width: 20px; height: 20px; }
 
     /* ========================================
        CASE STUDY CTA
@@ -1093,6 +1151,13 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-dots" aria-hidden="true">
+      <div class="hero-dot hero-dot-1"></div>
+      <div class="hero-dot hero-dot-2"></div>
+      <div class="hero-dot hero-dot-3"></div>
+      <div class="hero-dot hero-dot-4"></div>
+      <div class="hero-dot hero-dot-5"></div>
+    </div>
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content reveal-l">
