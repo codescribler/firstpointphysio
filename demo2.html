@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>First Point Physio — Managed FCP Services for GP Practices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","vrk75sz9cy");</script>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Poppins',sans-serif;font-weight:300;color:var(--text);background:var(--bg);line-height:1.85;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button,input{font-family:inherit;border:none;outline:none;background:none}
+
+/* ── TOKENS ── */
+:root{
+--navy:#041c40;
+--navy-mid:#0c2d52;
+--blue:#135ca0;
+--blue-bright:#3f7bf0;
+--blue-glow:rgba(63,123,240,0.15);
+--sky:#56aeff;
+--sky-soft:rgba(86,174,255,0.08);
+--teal:#b0d4df;
+--teal-soft:rgba(176,212,223,0.08);
+--bg:#f7f8fc;
+--bg-warm:#f0f3f8;
+--white:#ffffff;
+--text:#051d40;
+--text-2:#2a3f5f;
+--text-muted:#6b7e96;
+--border:#dce3ed;
+--border-light:#e8edf5;
+--ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ── GRAIN OVERLAY ── */
+.grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.018}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif;font-weight:700;line-height:0.95;letter-spacing:-0.045em}
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 40px}
+
+/* ── SCROLL REVEAL ── */
+.sr{opacity:0;transform:translateY(32px);transition:opacity 0.8s var(--ease),transform 0.8s var(--ease)}
+.sr.visible{opacity:1;transform:translateY(0)}
+.sr-d1{transition-delay:0.1s}
+.sr-d2{transition-delay:0.2s}
+.sr-d3{transition-delay:0.3s}
+.sr-d4{transition-delay:0.4s}
+.sr-d5{transition-delay:0.5s}
+
+/* ══════════════════════════════════════
+   1. NAV
+   ══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(4,28,64,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:38px;width:auto}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.6);font-size:14px;font-weight:400;letter-spacing:0.01em;transition:color 0.3s var(--ease)}
+.nav-links a:hover{color:#fff}
+.nav-cta{display:inline-flex;align-items:center;padding:10px 24px;background:var(--blue-bright);color:#fff !important;font-size:13px;font-weight:600;border-radius:100px;border:1px solid rgba(255,255,255,0.15);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 2px 8px rgba(63,123,240,0.2);transition:all 0.3s var(--ease)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 4px 16px rgba(63,123,240,0.35)}
+.nav-cta:active{transform:translateY(1px) scale(0.98)}
+
+/* Burger */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;padding:8px}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s var(--ease)}
+.burger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile overlay */
+.mobile-menu{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;z-index:999;opacity:0;pointer-events:none;transition:opacity 0.4s var(--ease)}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu a{color:#fff;font-family:'Outfit',sans-serif;font-size:28px;font-weight:600;letter-spacing:-0.02em}
+
+/* ══════════════════════════════════════
+   2. HERO
+   ══════════════════════════════════════ */
+.hero{padding:180px 0 120px;background:var(--bg)}
+.hero .container{display:grid;grid-template-columns:1.15fr 0.85fr;gap:80px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;padding:8px 18px;background:var(--sky-soft);color:var(--sky);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:100px;border:1px solid rgba(86,174,255,0.12);margin-bottom:28px}
+.hero h1{font-size:clamp(42px,6vw,72px);font-weight:800;letter-spacing:-0.045em;line-height:0.95;color:var(--navy);margin-bottom:32px}
+.hero-sub{font-weight:300;color:var(--text-muted);max-width:480px;line-height:1.85;font-size:17px;margin-bottom:40px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.btn-primary{display:inline-flex;align-items:center;padding:14px 32px;background:var(--blue-bright);color:#fff;font-size:15px;font-weight:600;border-radius:100px;border:1px solid rgba(255,255,255,0.15);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 2px 8px rgba(63,123,240,0.2);transition:all 0.3s var(--ease);cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 8px 24px rgba(63,123,240,0.3)}
+.btn-primary:active{transform:translateY(1px) scale(0.98)}
+.btn-ghost{display:inline-flex;align-items:center;padding:14px 32px;color:var(--text-2);font-size:15px;font-weight:500;border-radius:100px;border:1px solid var(--border);transition:all 0.3s var(--ease);cursor:pointer}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-ghost:active{transform:translateY(1px) scale(0.98)}
+.hero-trust{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted)}
+.hero-trust svg{flex-shrink:0}
+.hero-img-wrap{position:relative}
+.hero-img-wrap img{border-radius:28px;box-shadow:0 32px 64px rgba(4,28,64,0.12);width:100%;height:auto;object-fit:cover}
+.hero-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--bg),transparent);border-radius:0 0 28px 28px;pointer-events:none}
+
+/* ══════════════════════════════════════
+   3. MARQUEE
+   ══════════════════════════════════════ */
+.marquee{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;padding:20px 0}
+.marquee-track{display:flex;animation:marquee-scroll 40s linear infinite;width:max-content}
+.marquee-item{display:flex;align-items:center;gap:10px;padding:0 48px;white-space:nowrap;color:rgba(255,255,255,0.55);font-size:14px;font-weight:400}
+.marquee-item svg{color:var(--sky);flex-shrink:0}
+@keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════
+   4. STAKES
+   ══════════════════════════════════════ */
+.stakes{padding:160px 0;background:var(--bg)}
+.stakes-inner{padding-left:clamp(24px,12vw,200px);max-width:800px}
+.stakes h2{font-size:clamp(32px,4.5vw,48px);font-weight:700;color:var(--blue);margin-bottom:48px;letter-spacing:-0.045em;line-height:0.95}
+.stakes p{color:var(--text-2);font-size:16px;line-height:1.85;font-weight:300;margin-bottom:28px;max-width:600px}
+.stakes p:last-child{font-weight:500;margin-bottom:0}
+
+/* ══════════════════════════════════════
+   5. BENEFITS
+   ══════════════════════════════════════ */
+.benefits{padding:160px 0;background:var(--teal-soft)}
+.benefits h2{font-size:clamp(32px,4.5vw,48px);font-weight:700;color:var(--navy);margin-bottom:64px;letter-spacing:-0.045em;line-height:0.95}
+.benefit-item{display:grid;grid-template-columns:56px 1fr;gap:24px;padding:48px 0;border-top:1px solid var(--border);align-items:start}
+.benefit-item:last-child{padding-bottom:0}
+.benefit-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.benefit-icon--clock{background:rgba(63,123,240,0.08)}
+.benefit-icon--wallet{background:rgba(19,92,160,0.08)}
+.benefit-icon--shield{background:rgba(86,174,255,0.08)}
+.benefit-icon--heart{background:rgba(63,123,240,0.08)}
+.benefit-icon svg{width:24px;height:24px}
+.benefit-text h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:-0.02em;line-height:1.2}
+.benefit-text p{font-size:15px;color:var(--text-muted);font-weight:300;line-height:1.75;max-width:560px}
+.benefit-item--accent{border-left:4px solid var(--blue-bright);padding-left:24px;background:rgba(63,123,240,0.02);margin-left:-24px;border-radius:0 8px 8px 0}
+
+/* ══════════════════════════════════════
+   6. GUIDE
+   ══════════════════════════════════════ */
+.guide{padding:160px 0;background:var(--bg)}
+.guide .container{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start}
+.guide-badge{display:inline-flex;align-items:center;padding:8px 18px;background:var(--sky-soft);color:var(--sky);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:100px;border:1px solid rgba(86,174,255,0.12);margin-bottom:24px}
+.guide h2{font-size:clamp(32px,4.5vw,48px);font-weight:700;color:var(--navy);margin-bottom:32px;letter-spacing:-0.045em;line-height:0.95}
+.guide p{font-size:16px;color:var(--text-2);font-weight:300;line-height:1.85;margin-bottom:20px}
+.guide-stats{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.guide-stat{padding:32px 24px;border-top:1px solid var(--border)}
+.guide-stat-num{font-family:'Outfit',sans-serif;font-size:clamp(48px,6vw,72px);font-weight:800;color:var(--blue);letter-spacing:-0.04em;line-height:1}
+.guide-stat-label{font-size:14px;color:var(--text-muted);font-weight:400;margin-top:8px}
+
+/* ══════════════════════════════════════
+   7. PLAN
+   ══════════════════════════════════════ */
+.plan{padding:160px 0;background:var(--navy)}
+.plan h2{text-align:center;font-size:clamp(32px,4.5vw,48px);font-weight:700;color:#fff;margin-bottom:80px;letter-spacing:-0.045em;line-height:0.95}
+.plan-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;position:relative;max-width:900px;margin:0 auto 64px}
+.plan-steps::before{content:'';position:absolute;top:28px;left:calc(16.66% + 28px);right:calc(16.66% + 28px);height:1px;background:rgba(255,255,255,0.1)}
+.plan-step{flex:1;text-align:center;position:relative;padding:0 24px}
+.plan-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-bright));color:#fff;font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;position:relative;z-index:1}
+.plan-step h3{color:#fff;font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-0.02em;line-height:1.2}
+.plan-step p{color:rgba(255,255,255,0.5);font-size:15px;font-weight:300;line-height:1.65}
+.plan-cta{text-align:center}
+
+/* ══════════════════════════════════════
+   8. WHAT SETS US APART
+   ══════════════════════════════════════ */
+.apart{padding:160px 0;background:var(--bg)}
+.apart h2{font-size:clamp(32px,4.5vw,48px);font-weight:700;color:var(--navy);margin-bottom:64px;letter-spacing:-0.045em;line-height:0.95}
+.apart-grid{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:auto auto;gap:24px}
+.apart-card{background:var(--white);border:1px solid var(--border-light);border-radius:20px;padding:36px;transition:all 0.4s var(--ease)}
+.apart-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 12px 40px rgba(4,28,64,0.08)}
+.apart-card--feature{grid-row:1 / 3}
+.apart-card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:var(--sky-soft)}
+.apart-card-icon svg{width:22px;height:22px;color:var(--blue-bright)}
+.apart-card h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:12px;letter-spacing:-0.02em;line-height:1.2}
+.apart-card p{font-size:15px;color:var(--text-muted);font-weight:300;line-height:1.75}
+.apart-card--feature p{font-size:16px}
+
+/* ══════════════════════════════════════
+   9. NUMBERS
+   ══════════════════════════════════════ */
+.numbers{padding:160px 0;background:var(--navy)}
+.numbers h2{text-align:center;font-size:clamp(32px,4.5vw,48px);font-weight:700;color:#fff;margin-bottom:80px;letter-spacing:-0.045em;line-height:0.95}
+.numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:960px;margin:0 auto}
+.number-cell{text-align:center;padding:48px 24px;border-right:1px solid rgba(255,255,255,0.06)}
+.number-cell:nth-child(3n){border-right:none}
+.number-cell:nth-child(-n+3){border-bottom:1px solid rgba(255,255,255,0.06)}
+.number-val{font-family:'Outfit',sans-serif;font-size:clamp(56px,8vw,88px);font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1}
+.number-val .suffix{color:var(--sky)}
+.number-label{font-size:14px;color:rgba(255,255,255,0.35);font-weight:400;margin-top:12px}
+.numbers-source{text-align:center;margin-top:48px;font-size:13px;color:rgba(255,255,255,0.25);font-style:italic}
+
+/* ══════════════════════════════════════
+   10. SERVICE
+   ══════════════════════════════════════ */
+.service{padding:160px 0;background:var(--bg)}
+.service .container{display:grid;grid-template-columns:1.2fr 0.8fr;gap:64px;align-items:start}
+.service h2{font-size:clamp(32px,4.5vw,48px);font-weight:700;color:var(--navy);margin-bottom:48px;letter-spacing:-0.045em;line-height:0.95}
+.checklist{display:flex;flex-direction:column;gap:20px}
+.checklist-item{display:flex;align-items:flex-start;gap:14px;font-size:16px;color:var(--text-2);font-weight:400;line-height:1.65}
+.checklist-item svg{flex-shrink:0;margin-top:3px;color:var(--blue-bright)}
+.arrs-card{background:var(--teal-soft);border:1px solid rgba(176,212,223,0.15);border-radius:20px;padding:36px;position:sticky;top:100px}
+.arrs-card h3{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
+.arrs-card p{font-size:15px;color:var(--text-2);font-weight:300;line-height:1.75;margin-bottom:24px}
+.arrs-highlight{background:var(--white);border-radius:12px;padding:16px 20px;font-size:14px;font-weight:600;color:var(--blue);text-align:center;border:1px solid var(--border-light)}
+
+/* ══════════════════════════════════════
+   11. CASE STUDY CTA
+   ══════════════════════════════════════ */
+.case-study{padding:160px 0;background:linear-gradient(160deg,var(--navy),var(--navy-mid));position:relative;overflow:hidden}
+.case-study::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(86,174,255,0.06),transparent 70%);pointer-events:none}
+.case-study .container{text-align:center;position:relative;z-index:1}
+.case-study-badge{display:inline-flex;align-items:center;padding:8px 18px;background:rgba(86,174,255,0.08);color:var(--sky);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:100px;border:1px solid rgba(86,174,255,0.12);margin-bottom:28px}
+.case-study h2{font-size:clamp(32px,4.5vw,48px);font-weight:700;color:#fff;margin-bottom:20px;letter-spacing:-0.045em;line-height:0.95}
+.case-study-sub{color:rgba(255,255,255,0.5);font-size:16px;font-weight:300;max-width:440px;margin:0 auto 40px;line-height:1.75}
+.case-study-form{display:flex;gap:12px;max-width:440px;margin:0 auto}
+.case-study-form input{flex:1;padding:14px 20px;background:rgba(255,255,255,0.05);color:#fff;border:2px solid rgba(255,255,255,0.1);border-radius:100px;font-size:15px;font-weight:400;transition:border-color 0.3s var(--ease)}
+.case-study-form input::placeholder{color:rgba(255,255,255,0.3)}
+.case-study-form input:focus{border-color:var(--sky)}
+.case-study-form button{flex-shrink:0}
+
+/* ══════════════════════════════════════
+   12. FOOTER
+   ══════════════════════════════════════ */
+.footer{background:var(--navy);padding:80px 0 0}
+.footer-top{padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:center}
+.footer-top h2{font-size:clamp(28px,3.5vw,40px);font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-0.04em;line-height:0.95}
+.footer-top p{color:rgba(255,255,255,0.4);font-size:15px;font-weight:300;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.75}
+.footer-contacts{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;margin-bottom:32px}
+.footer-contact{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.55);font-size:14px;transition:color 0.3s var(--ease)}
+.footer-contact:hover{color:#fff}
+.footer-contact svg{color:var(--sky);flex-shrink:0}
+.footer-bottom{padding:24px 0;text-align:center}
+.footer-bottom p{font-size:13px;color:rgba(255,255,255,0.2)}
+
+/* ══════════════════════════════════════
+   14. PRINT
+   ══════════════════════════════════════ */
+@media print{
+.nav,.marquee,.grain{display:none !important}
+body{background:white}
+[class*="--navy"],.section--navy,.plan,.numbers,.case-study,.footer{background:#f5f5f5 !important;color:#1a1a1a !important}
+h2,h3{color:#1a1a1a !important}
+.number-val,.guide-stat-num{color:#135ca0 !important}
+*{break-inside:avoid}
+}
+
+/* ══════════════════════════════════════
+   15. RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .container{padding:0 24px}
+
+  .hero{padding:120px 0 80px}
+  .hero .container{grid-template-columns:1fr;gap:48px}
+  .hero-img-wrap{order:2}
+
+  .marquee-item{padding:0 28px}
+
+  .stakes-inner{padding-left:24px}
+
+  .guide .container{grid-template-columns:1fr;gap:56px}
+
+  .plan-steps{flex-direction:column;align-items:flex-start;gap:48px;padding-left:52px}
+  .plan-steps::before{top:0;bottom:0;left:52px;right:auto;width:1px;height:auto}
+  .plan-step{text-align:left;display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:start;padding:0}
+  .plan-num{margin:0}
+  .plan-step h3,.plan-step p{text-align:left}
+
+  .apart-grid{grid-template-columns:1fr}
+  .apart-card--feature{grid-row:auto}
+
+  .numbers-grid{grid-template-columns:repeat(2,1fr)}
+  .number-cell:nth-child(2n){border-right:none}
+  .number-cell:nth-child(3n){border-right:1px solid rgba(255,255,255,0.06)}
+  .number-cell:nth-child(-n+3){border-bottom:none}
+  .number-cell:nth-child(-n+4){border-bottom:1px solid rgba(255,255,255,0.06)}
+
+  .service .container{grid-template-columns:1fr}
+  .arrs-card{position:static}
+
+  .case-study-form{flex-direction:column}
+  .case-study-form button{width:100%}
+}
+
+@media(max-width:640px){
+  .hero h1{font-size:clamp(36px,8vw,52px)}
+  .hero{padding:100px 0 64px}
+  .hero-ctas{flex-direction:column}
+  .hero-ctas .btn-primary,.hero-ctas .btn-ghost{width:100%;justify-content:center}
+
+  .stakes,.benefits,.guide,.apart,.service{padding:100px 0}
+  .plan,.numbers,.case-study{padding:100px 0}
+
+  .benefit-item{grid-template-columns:1fr;gap:16px}
+  .benefit-icon{width:48px;height:48px}
+
+  .guide-stats{grid-template-columns:1fr}
+
+  .numbers-grid{grid-template-columns:1fr 1fr}
+
+  .footer-contacts{flex-direction:column;gap:16px}
+
+  .btn-primary,.btn-ghost,.nav-cta{min-height:44px}
+}
+</style>
+</head>
+<body>
+
+<!-- GRAIN -->
+<svg class="grain" aria-hidden="true"><filter id="grain-filter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain-filter)"/></svg>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+<div class="container">
+  <a href="#" class="nav-logo"><img src="images/logo (1).jpg" alt="First Point Physio"></a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#results">Results</a>
+    <a href="#included">What's Included</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+  <div class="burger" aria-label="Menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu">
+  <a href="#services">Services</a>
+  <a href="#why-us">Why Us</a>
+  <a href="#results">Results</a>
+  <a href="#included">What's Included</a>
+  <a href="#contact" class="btn-primary">Get in Touch</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="services">
+<div class="container">
+  <div class="hero-text">
+    <div class="hero-badge sr">Managed FCP Services</div>
+    <h1 class="sr sr-d1">Free Up<br>Your GPs.<br>We Handle MSK.</h1>
+    <p class="hero-sub sr sr-d2">Fully managed First Contact Practitioners for your PCN — recruited, supervised, and covered. Small team. Big impact.</p>
+    <div class="hero-ctas sr sr-d3">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#case-study" class="btn-ghost">Download Case Study</a>
+    </div>
+    <div class="hero-trust sr sr-d4">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Trusted by 120+ GP surgeries since 2017
+    </div>
+  </div>
+  <div class="hero-img-wrap sr sr-d2">
+    <img src="images/hero-image-healthy-female-runner.webp" alt="Active patient after physiotherapy treatment">
+  </div>
+</div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee">
+<div class="marquee-track">
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>87% managed without referral</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>50+ clinicians nationwide</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Running since 2017</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>98% utilisation rate</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>94% would recommend</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>120+ GP surgeries</div>
+  <!-- Duplicate for seamless loop -->
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>87% managed without referral</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>50+ clinicians nationwide</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Running since 2017</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>98% utilisation rate</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>94% would recommend</div>
+  <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>120+ GP surgeries</div>
+</div>
+</div>
+
+<!-- ═══ STAKES ═══ -->
+<section class="stakes" id="why-us">
+<div class="container">
+  <div class="stakes-inner">
+    <h2 class="sr">Sound Familiar?</h2>
+    <p class="sr sr-d1">Your GPs are spending up to 30% of their time on MSK cases that could be handled elsewhere. The ARRS funding is there, but finding, recruiting, and retaining a First Contact Practitioner feels like a full-time job in itself.</p>
+    <p class="sr sr-d2">Or maybe you've tried a large provider. The clinicians rotate every few months. Management feels impersonal. When something goes wrong, it takes weeks to get a response through layers of escalation.</p>
+    <p class="sr sr-d3">You don't need another faceless provider. You need a partner who knows your practice by name.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ BENEFITS ═══ -->
+<section class="benefits">
+<div class="container">
+  <h2 class="sr">What Changes When<br>You Work With Us</h2>
+
+  <div class="benefit-item sr sr-d1">
+    <div class="benefit-icon benefit-icon--clock">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#3f7bf0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+    <div class="benefit-text">
+      <h3>GP Time Reclaimed</h3>
+      <p>Your GPs get their appointments back. Our FCPs take MSK cases off the list entirely — assessed, managed, and resolved without bouncing back to the GP.</p>
+    </div>
+  </div>
+
+  <div class="benefit-item sr sr-d2">
+    <div class="benefit-icon benefit-icon--wallet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#135ca0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+    </div>
+    <div class="benefit-text">
+      <h3>ARRS Funding Put to Work</h3>
+      <p>Your allocation is already there. We help you use it effectively — fully compliant, fully managed, no wasted budget sitting on the table.</p>
+    </div>
+  </div>
+
+  <div class="benefit-item sr sr-d3">
+    <div class="benefit-icon benefit-icon--shield">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#56aeff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div class="benefit-text">
+      <h3>Zero Operational Burden</h3>
+      <p>Recruitment, supervision, CPD, absence cover, clinical governance — all handled. You don't lift a finger beyond pointing patients to the right clinic room.</p>
+    </div>
+  </div>
+
+  <div class="benefit-item benefit-item--accent sr sr-d4">
+    <div class="benefit-icon benefit-icon--heart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#3f7bf0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </div>
+    <div class="benefit-text">
+      <h3>A Partner, Not a Provider</h3>
+      <p>We're a small, focused team — not a call centre. The director answers his phone. Your practice isn't an account number, it's a relationship.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ GUIDE ═══ -->
+<section class="guide" id="results">
+<div class="container">
+  <div class="guide-left">
+    <div class="guide-badge sr">Proven Track Record</div>
+    <h2 class="sr sr-d1">We Know What<br>It's Like</h2>
+    <p class="sr sr-d2">We've been doing this since 2017 — long before managed FCP services became a trend. Every clinician we place is recruited for quality, supervised weekly, and embedded in your practice culture.</p>
+    <p class="sr sr-d3">The result? Consistent outcomes that speak for themselves. Not promises in a pitch deck — real numbers from real GP surgeries across the country.</p>
+  </div>
+  <div class="guide-stats">
+    <div class="guide-stat sr sr-d1">
+      <div class="guide-stat-num" data-target="87" data-suffix="%">0%</div>
+      <div class="guide-stat-label">Managed in-service</div>
+    </div>
+    <div class="guide-stat sr sr-d2">
+      <div class="guide-stat-num" data-target="98" data-suffix="%">0%</div>
+      <div class="guide-stat-label">Utilisation rate</div>
+    </div>
+    <div class="guide-stat sr sr-d3">
+      <div class="guide-stat-num" data-target="94" data-suffix="%">0%</div>
+      <div class="guide-stat-label">Would recommend</div>
+    </div>
+    <div class="guide-stat sr sr-d4">
+      <div class="guide-stat-num" data-target="80" data-suffix="%">0%</div>
+      <div class="guide-stat-label">No GP follow-up needed</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ PLAN ═══ -->
+<section class="plan">
+<div class="container">
+  <h2 class="sr">Getting Started Is Simple</h2>
+  <div class="plan-steps">
+    <div class="plan-step sr sr-d1">
+      <div class="plan-num">1</div>
+      <div>
+        <h3>Get in Touch</h3>
+        <p>A quick call with our director to understand your practice needs, capacity, and timeline.</p>
+      </div>
+    </div>
+    <div class="plan-step sr sr-d2">
+      <div class="plan-num">2</div>
+      <div>
+        <h3>We Handle Everything</h3>
+        <p>Recruitment, vetting, onboarding, clinical governance, and integration with your team — all managed by us.</p>
+      </div>
+    </div>
+    <div class="plan-step sr sr-d3">
+      <div class="plan-num">3</div>
+      <div>
+        <h3>Your GPs Get Their Time Back</h3>
+        <p>MSK patients are seen, treated, and managed — freeing your GPs to focus on complex cases.</p>
+      </div>
+    </div>
+  </div>
+  <div class="plan-cta sr sr-d4">
+    <a href="#contact" class="btn-primary">Get in Touch</a>
+  </div>
+</div>
+</section>
+
+<!-- ═══ WHAT SETS US APART ═══ -->
+<section class="apart">
+<div class="container">
+  <h2 class="sr">What Sets Us Apart</h2>
+  <div class="apart-grid">
+    <div class="apart-card apart-card--feature sr sr-d1">
+      <div class="apart-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Personalised Service</h3>
+      <p>We're a small, agile provider by design. That means your priorities are our priorities. No bureaucracy, no ticket systems, no waiting. Our director, Phillip, answers his phone — and he knows your practice by name. When you need something changed, it happens the same day. That's not a selling point, it's just how we work.</p>
+    </div>
+    <div class="apart-card sr sr-d2">
+      <div class="apart-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <h3>Clinical Development</h3>
+      <p>Structured CPD programmes keep every clinician current. Regular supervision, peer review, and skills development built in.</p>
+    </div>
+    <div class="apart-card sr sr-d3">
+      <div class="apart-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+      </div>
+      <h3>Performance Reporting</h3>
+      <p>Monthly bespoke reports with clinic-level data. You see exactly what's being delivered, patient outcomes, and utilisation.</p>
+    </div>
+    <div class="apart-card sr sr-d4">
+      <div class="apart-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Responsive Communication</h3>
+      <p>Same-day resolution on any issue. No escalation tiers, no support tickets. You call, we answer, it gets fixed.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ NUMBERS ═══ -->
+<section class="numbers">
+<div class="container">
+  <h2 class="sr">The Numbers Speak</h2>
+  <div class="numbers-grid">
+    <div class="number-cell sr sr-d1">
+      <div class="number-val" data-target="87" data-suffix="%">0<span class="suffix">%</span></div>
+      <div class="number-label">Managed without referral</div>
+    </div>
+    <div class="number-cell sr sr-d2">
+      <div class="number-val" data-target="98" data-suffix="%">0<span class="suffix">%</span></div>
+      <div class="number-label">Clinician utilisation</div>
+    </div>
+    <div class="number-cell sr sr-d3">
+      <div class="number-val" data-target="94" data-suffix="%">0<span class="suffix">%</span></div>
+      <div class="number-label">Would recommend</div>
+    </div>
+    <div class="number-cell sr sr-d1">
+      <div class="number-val" data-target="80" data-suffix="%">0<span class="suffix">%</span></div>
+      <div class="number-label">No GP follow-up needed</div>
+    </div>
+    <div class="number-cell sr sr-d2">
+      <div class="number-val" data-target="50" data-suffix="+">0<span class="suffix">+</span></div>
+      <div class="number-label">Clinicians nationwide</div>
+    </div>
+    <div class="number-cell sr sr-d3">
+      <div class="number-val" data-target="120" data-suffix="+">0<span class="suffix">+</span></div>
+      <div class="number-label">GP surgeries served</div>
+    </div>
+  </div>
+  <p class="numbers-source sr">Source: First Point Physio internal data, 2024-2025</p>
+</div>
+</section>
+
+<!-- ═══ SERVICE ═══ -->
+<section class="service" id="included">
+<div class="container">
+  <div class="service-left">
+    <h2 class="sr">Everything Included.<br>One Price.</h2>
+    <div class="checklist">
+      <div class="checklist-item sr sr-d1">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Recruitment and vetting of qualified FCPs
+      </div>
+      <div class="checklist-item sr sr-d1">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Clinical supervision and governance
+      </div>
+      <div class="checklist-item sr sr-d2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Structured CPD and professional development
+      </div>
+      <div class="checklist-item sr sr-d2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Absence and holiday cover
+      </div>
+      <div class="checklist-item sr sr-d3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Monthly performance reporting
+      </div>
+      <div class="checklist-item sr sr-d3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        DBS checks and compliance management
+      </div>
+      <div class="checklist-item sr sr-d4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Practice integration and onboarding
+      </div>
+      <div class="checklist-item sr sr-d4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Direct line to our director for any issue
+      </div>
+    </div>
+  </div>
+  <div class="arrs-card sr sr-d2">
+    <h3>ARRS Funded</h3>
+    <p>First Contact Practitioners are fully funded through the Additional Roles Reimbursement Scheme. We handle the paperwork, you get the clinician. No financial risk to your practice.</p>
+    <div class="arrs-highlight">100% refundable within ARRS limits</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CASE STUDY CTA ═══ -->
+<section class="case-study" id="case-study">
+<div class="container">
+  <div class="case-study-badge sr">Free Resource</div>
+  <h2 class="sr sr-d1">See How It Works<br>in Practice</h2>
+  <p class="case-study-sub sr sr-d2">Get our case study showing real outcomes from GP practices using our managed FCP service.</p>
+  <form class="case-study-form sr sr-d3" onsubmit="return false;">
+    <input type="email" placeholder="Your work email" aria-label="Email address">
+    <button type="submit" class="btn-primary">Send Case Study</button>
+  </form>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer" id="contact">
+<div class="container">
+  <div class="footer-top">
+    <h2 class="sr">Let's Talk</h2>
+    <p class="sr sr-d1">Ready to take MSK off your plate? Get in touch for a no-obligation conversation about your practice needs.</p>
+    <div class="footer-contacts sr sr-d2">
+      <a href="mailto:info@firstpointphysio.co.uk" class="footer-contact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@firstpointphysio.co.uk
+      </a>
+      <a href="tel:07731526103" class="footer-contact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Phillip Dale — 07731 526 103
+      </a>
+    </div>
+    <a href="mailto:info@firstpointphysio.co.uk" class="btn-primary sr sr-d3">Get in Touch</a>
+  </div>
+  <div class="footer-bottom">
+    <p>2026 First Point Physio Ltd | firstpointphysio.co.uk</p>
+  </div>
+</div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+(function(){
+  /* ── Mobile menu ── */
+  var burger = document.querySelector('.burger');
+  var mobileMenu = document.querySelector('.mobile-menu');
+  var mobileLinks = mobileMenu.querySelectorAll('a');
+  function toggleMenu(){
+    burger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  }
+  burger.addEventListener('click', toggleMenu);
+  mobileLinks.forEach(function(link){ link.addEventListener('click', toggleMenu); });
+
+  /* ── Scroll reveal ── */
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var srElements = document.querySelectorAll('.sr');
+  if(prefersReduced){
+    srElements.forEach(function(el){ el.classList.add('visible'); });
+  } else {
+    var revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    },{ threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+    srElements.forEach(function(el){ revealObs.observe(el); });
+  }
+
+  /* ── Smooth anchor scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    });
+  });
+
+  /* ── Counter animation ── */
+  function easeOutQuart(t){ return 1 - Math.pow(1 - t, 4); }
+
+  function animateCounter(el){
+    var target = parseInt(el.getAttribute('data-target'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 2000;
+    var start = performance.now();
+    var hasSuffixSpan = el.querySelector('.suffix');
+
+    function update(now){
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var value = Math.round(easeOutQuart(progress) * target);
+      if(hasSuffixSpan){
+        el.childNodes[0].textContent = value;
+      } else {
+        el.textContent = value + suffix;
+      }
+      if(progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        animateCounter(e.target);
+        counterObs.unobserve(e.target);
+      }
+    });
+  },{ threshold:0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(function(el){
+    counterObs.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
