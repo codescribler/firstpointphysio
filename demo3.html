@@ -488,6 +488,71 @@ body.menu-open{overflow:hidden}
   .reveal,.reveal-l,.reveal-r,.reveal-s{opacity:1;transform:none}
 }
 
+/* === DEMO MODAL === */
+.demo-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(4,28,64,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease-out-expo);
+  padding:24px;
+}
+.demo-overlay.open{opacity:1;pointer-events:auto}
+.demo-modal{
+  background:var(--navy-surface);border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;padding:48px 40px;max-width:480px;width:100%;
+  text-align:center;position:relative;
+  transform:scale(0.95) translateY(20px);
+  transition:transform 0.4s var(--ease-out-expo);
+  box-shadow:0 40px 80px rgba(0,0,0,0.4);
+}
+.demo-overlay.open .demo-modal{transform:scale(1) translateY(0)}
+.demo-modal-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.3s;
+}
+.demo-modal-close:hover{background:rgba(255,255,255,0.12);color:#fff}
+.demo-modal-close svg{width:18px;height:18px}
+.demo-modal-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 16px;border-radius:100px;
+  background:rgba(63,123,240,0.1);border:1px solid rgba(63,123,240,0.15);
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;
+  color:var(--blue-bright);letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.demo-modal h2{
+  font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;
+  color:#fff;margin-bottom:12px;letter-spacing:-0.02em;
+}
+.demo-modal p{
+  font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);
+  line-height:1.75;margin-bottom:28px;
+}
+.demo-modal-contacts{
+  display:flex;flex-direction:column;gap:12px;margin-bottom:8px;
+}
+.demo-modal-contact{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 20px;border-radius:12px;
+  font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
+  transition:all 0.3s var(--ease-out-expo);
+}
+.demo-modal-contact svg{width:18px;height:18px;flex-shrink:0}
+.demo-modal-contact-email{
+  background:var(--blue-bright);color:#fff;
+  box-shadow:0 4px 20px rgba(63,123,240,0.25);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.demo-modal-contact-email:hover{box-shadow:0 8px 30px rgba(63,123,240,0.35);transform:translateY(-2px)}
+.demo-modal-contact-phone{
+  background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.demo-modal-contact-phone:hover{background:rgba(255,255,255,0.08);color:#fff;transform:translateY(-2px)}
+
 /* === PRINT === */
 @media print{
   .nav,.marquee,.mesh-bg,.mobile-menu{display:none !important}
@@ -505,12 +570,13 @@ body.menu-open{overflow:hidden}
   <div class="container nav-inner">
     <a href="#" class="nav-logo"><img src="images/logo (1).jpg" alt="First Point Physio"></a>
     <ul class="nav-links">
-      <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#apart">Why Us</a></li>
-      <li><a href="#footer-cta">Contact</a></li>
+      <li><a href="#" class="demo-link">Services</a></li>
+      <li><a href="#" class="demo-link">For PCNs</a></li>
+      <li><a href="#" class="demo-link">Results</a></li>
+      <li><a href="#" class="demo-link">About</a></li>
+      <li><a href="#" class="demo-link">Contact</a></li>
     </ul>
-    <a href="#footer-cta" class="nav-cta">
+    <a href="#" class="nav-cta demo-link">
       Get in Touch
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
@@ -522,11 +588,12 @@ body.menu-open{overflow:hidden}
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#benefits" class="mobile-link">Benefits</a>
-  <a href="#process" class="mobile-link">Process</a>
-  <a href="#apart" class="mobile-link">Why Us</a>
-  <a href="#footer-cta" class="mobile-link">Contact</a>
-  <a href="#footer-cta" class="btn-magnetic" style="margin-top:20px;width:80%;max-width:320px;justify-content:center;">Get in Touch</a>
+  <a href="#" class="mobile-link demo-link">Services</a>
+  <a href="#" class="mobile-link demo-link">For PCNs</a>
+  <a href="#" class="mobile-link demo-link">Results</a>
+  <a href="#" class="mobile-link demo-link">About</a>
+  <a href="#" class="mobile-link demo-link">Contact</a>
+  <a href="#" class="btn-magnetic demo-link" style="margin-top:20px;width:80%;max-width:320px;justify-content:center;">Get in Touch</a>
 </div>
 
 <svg class="grain" aria-hidden="true"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
@@ -548,12 +615,12 @@ body.menu-open{overflow:hidden}
       <p class="hero-text reveal">Embedded First Contact Practitioners who know your practice, your patients, and your team. Fully managed. Zero burden.</p>
       <div class="hero-ctas reveal">
         <div class="btn-magnetic-wrap">
-          <a href="#footer-cta" class="btn-magnetic">
+          <a href="#" class="btn-magnetic demo-link">
             Get in Touch
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
-        <a href="#case-study" class="btn-ghost">Download Case Study</a>
+        <a href="#" class="btn-ghost demo-link">Download Case Study</a>
       </div>
       <div class="hero-stats reveal">
         <div class="hero-stat">
@@ -696,7 +763,7 @@ body.menu-open{overflow:hidden}
     </div>
     <div class="process-cta reveal">
       <div class="btn-magnetic-wrap">
-        <a href="#footer-cta" class="btn-magnetic">
+        <a href="#" class="btn-magnetic demo-link">
           Start the Conversation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -796,13 +863,36 @@ body.menu-open{overflow:hidden}
     <div class="case-cta-inner">
       <h2 class="reveal">See the Results for Yourself</h2>
       <p class="reveal">Download our case study showing how a PCN freed up GP time and put ARRS funding to work with First Point Physio.</p>
-      <form class="email-form reveal" onsubmit="return false;">
+      <form class="email-form reveal" id="caseStudyForm">
         <input type="email" placeholder="Your work email address" required aria-label="Work email address">
         <button type="submit">Download</button>
       </form>
     </div>
   </div>
 </section>
+
+<!-- DEMO MODAL -->
+<div class="demo-overlay" id="demoModal">
+  <div class="demo-modal">
+    <button class="demo-modal-close" id="demoModalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="demo-modal-badge">Homepage Demo</div>
+    <h2>This Is a Demo</h2>
+    <p>You're viewing a working demo of the proposed First Point Physio homepage. The full site would include dedicated pages for Services, PCN information, Results, About, and Contact.</p>
+    <p style="margin-bottom:32px;">Like what you see? Let's talk about building the real thing.</p>
+    <div class="demo-modal-contacts">
+      <a href="mailto:daniel@dreamfree.co.uk" class="demo-modal-contact demo-modal-contact-email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        daniel@dreamfree.co.uk
+      </a>
+      <a href="tel:+447786556885" class="demo-modal-contact demo-modal-contact-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        07786 556 885
+      </a>
+    </div>
+  </div>
+</div>
 
 </main>
 
@@ -814,14 +904,14 @@ body.menu-open{overflow:hidden}
         <h3><strong>Let's talk</strong> about your practice.</h3>
         <p>We respond the same day. Always.</p>
         <div class="btn-magnetic-wrap">
-          <a href="mailto:info@firstpointphysio.co.uk" class="btn-magnetic">
-            Email Us
+          <a href="#" class="btn-magnetic demo-link">
+            Get in Touch
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
       </div>
       <div class="footer-contact">
-        <a href="mailto:info@firstpointphysio.co.uk">info@firstpointphysio.co.uk</a>
+        <a href="#" class="demo-link">info@firstpointphysio.co.uk</a>
       </div>
     </div>
     <div class="footer-bar">
@@ -973,15 +1063,44 @@ body.menu-open{overflow:hidden}
     }, { passive: true });
   }
 
-  /* --- SMOOTH ANCHOR SCROLLING --- */
-  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+  /* --- DEMO MODAL --- */
+  var demoModal = document.getElementById('demoModal');
+  var demoClose = document.getElementById('demoModalClose');
+  var caseStudyForm = document.getElementById('caseStudyForm');
+
+  function openDemoModal(e) {
+    e.preventDefault();
+    // Close mobile menu if open
+    if (mobileMenu.classList.contains('open')) {
+      mobileMenu.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    }
+    demoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDemoModal() {
+    demoModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // All .demo-link elements open the modal
+  document.querySelectorAll('.demo-link').forEach(function(link) {
+    link.addEventListener('click', openDemoModal);
+  });
+
+  // Case study form submits also open modal
+  if (caseStudyForm) {
+    caseStudyForm.addEventListener('submit', openDemoModal);
+  }
+
+  // Close modal
+  demoClose.addEventListener('click', closeDemoModal);
+  demoModal.addEventListener('click', function(e) {
+    if (e.target === demoModal) closeDemoModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && demoModal.classList.contains('open')) closeDemoModal();
   });
 
 })();
