@@ -601,6 +601,13 @@
       font-size: 16px;
       margin-bottom: 16px;
     }
+    .guide-image-wrap {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 24px 48px rgba(19,92,160,0.1);
+      border: 1px solid var(--border-light);
+    }
+    .guide-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
     .guide-image-placeholder {
       position: relative;
       background: var(--bg-warm);
@@ -764,6 +771,12 @@
     ======================================== */
     .process { padding: 140px 0; background: var(--white); position: relative; }
     .process-layout { display: grid; grid-template-columns: 1fr 0.7fr; gap: 64px; align-items: center; }
+    .process-image {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 24px 48px rgba(19,92,160,0.1);
+      border: 1px solid var(--border-light);
+    }
+    .process-image img { width: 100%; height: auto; display: block; }
     .process-step { display: grid; grid-template-columns: 80px 1fr; gap: 24px; padding: 48px 0; border-top: 1px solid var(--border); align-items: start; }
     .step-num { font-family: var(--heading); font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: rgba(63,123,240,0.15); line-height: 1; }
     .step-title { font-family: var(--heading); font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
@@ -982,6 +995,7 @@
 
       .process-layout { grid-template-columns: 1fr; }
       .process-image { display: none; }
+      .guide-image-wrap { margin-top: 32px; }
       .apart-grid { grid-template-columns: 1fr; }
       .apart-grid > :first-child { grid-column: auto; }
       .service-layout { grid-template-columns: 1fr; }
@@ -1100,7 +1114,7 @@
           </div>
         </div>
         <div class="hero-image-wrap reveal-r dots dots-hero-img">
-          <img src="images/hero-image-healthy-female-runner.webp" alt="Active patient showing the results of great physiotherapy care">
+          <img src="images/Physio arm pic.png" alt="Physiotherapist assessing a patient's shoulder mobility in a clinical setting">
         </div>
       </div>
     </div>
@@ -1214,8 +1228,8 @@
           <p>We started as clinicians working inside GP practices. We've seen the pressures first-hand — the overrun lists, the admin burden, the revolving door of locums who never stick around long enough to make a difference.</p>
           <p>That's why we built First Point Physio differently. We're not a staffing agency. We're a clinical partner that embeds experienced practitioners into your team and takes full responsibility for their performance, governance, and development.</p>
         </div>
-        <div class="guide-image-placeholder reveal-r">
-          <span>Team photo or FCP in practice</span>
+        <div class="guide-image-wrap reveal-r">
+          <img src="images/Physio back pic.png" alt="Physiotherapist examining a patient's back and shoulder">
         </div>
       </div>
     </div>
@@ -1275,9 +1289,7 @@
           </div>
         </div>
         <div class="process-image reveal-r">
-          <div class="guide-image-placeholder">
-            <span>FCP working in a GP surgery</span>
-          </div>
+          <img src="images/Physio knee pic.png" alt="Physiotherapist assessing a patient's knee">
         </div>
       </div>
       <div class="process-cta reveal">
