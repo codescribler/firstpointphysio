@@ -525,6 +525,23 @@
       }
       .journey-table tbody td:last-child { padding-top: 4px; }
     }
+
+    /* ═══ PRINT ═══ */
+    @media print {
+      .prop-header, .toc, .grain { display: none !important; }
+      .prop-layout { display: block; padding-top: 0; }
+      .prop-content { max-width: 100%; }
+      .prop-section { page-break-inside: avoid; margin-bottom: 40px; }
+      .prop-hr { margin: 32px 0; }
+      .framework-step, .feature-card, .compare-card { break-inside: avoid; }
+      .table-wrap { border: 1px solid #ddd; }
+      .prop-cta { background: #f5f5f5; color: #1a1a1a; }
+      .prop-cta h2 { color: #1a1a1a; }
+      .prop-cta .cta-sub { color: #555; }
+      .prop-cta-contact { color: #1a1a1a; }
+      .btn-cta { background: #333; }
+      body { background: white; }
+    }
   </style>
 </head>
 <body>
