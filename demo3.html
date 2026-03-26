@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Fully managed First Contact Practitioners for your PCN. 50+ clinicians, 120+ GP surgeries, since 2017.">
+  <title>First Point Physio — Reducing Workload Pressure in Primary Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "vrk75sz9cy");
+  </script>
+  <style>
+    /* ========================================
+       DESIGN SYSTEM
+    ======================================== */
+    :root {
+      --navy: #041c40;
+      --navy-mid: #071f3a;
+      --blue: #135ca0;
+      --blue-bright: #3f7bf0;
+      --blue-hover: #2d6ae0;
+      --blue-glow: rgba(63, 123, 240, 0.15);
+      --blue-soft: rgba(63, 123, 240, 0.06);
+      --sky: #56aeff;
+      --sky-soft: rgba(86, 174, 255, 0.08);
+      --teal: #b0d4df;
+      --teal-soft: #e8f4f8;
+      --teal-bg: #f0f7fa;
+      --bg: #fafbfe;
+      --bg-warm: #f5f7fb;
+      --white: #ffffff;
+      --text: #041c40;
+      --text-2: #2a3f5f;
+      --text-muted: #6b7e96;
+      --border: #dce3ed;
+      --border-light: #e8edf5;
+      --shadow: rgba(19, 92, 160, 0.08);
+      --shadow-md: rgba(19, 92, 160, 0.12);
+      --shadow-lg: rgba(19, 92, 160, 0.16);
+      --heading: 'Outfit', sans-serif;
+      --body: 'Poppins', sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --radius-full: 100px;
+    }
+
+    /* Reset */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    img, svg { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font: inherit; }
+    ul, ol { list-style: none; }
+
+    /* Base */
+    body {
+      font-family: var(--body);
+      font-weight: 300;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.012;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--heading);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+    h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -0.035em; }
+    h2 { font-size: clamp(32px, 4.5vw, 48px); font-weight: 700; }
+    h3 { font-size: clamp(20px, 2.5vw, 26px); font-weight: 600; }
+
+    p { color: var(--text-2); font-weight: 300; line-height: 1.85; }
+
+    /* ========================================
+       BUTTONS
+    ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: var(--radius-full);
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: all 0.4s var(--ease);
+      min-height: 52px;
+      cursor: pointer;
+    }
+    .btn:active { transform: translateY(1px) scale(0.98); }
+
+    .btn-primary {
+      background: var(--blue-bright);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 16px var(--blue-glow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+    .btn-primary:hover {
+      background: var(--blue-hover);
+      box-shadow: 0 8px 32px rgba(63, 123, 240, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+    .btn-outline:hover {
+      border-color: var(--blue-bright);
+      color: var(--blue-bright);
+      box-shadow: 0 4px 16px var(--blue-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost-dark {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-ghost-dark:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-magnetic { transition: transform 0.3s var(--ease); }
+
+    /* ========================================
+       DECORATIVE DOTS
+    ======================================== */
+    .dots { position: relative; }
+    .dots::before, .dots::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue-bright);
+      pointer-events: none;
+    }
+    .dots::before { width: 12px; height: 12px; opacity: 0.2; }
+    .dots::after { width: 8px; height: 8px; opacity: 0.12; }
+
+    .dots-hero-badge::before { top: -8px; right: -20px; }
+    .dots-hero-badge::after { top: 4px; right: -34px; }
+
+    .dots-hero-img::before { bottom: 32px; right: -16px; }
+    .dots-hero-img::after { bottom: 16px; right: -28px; }
+
+    .dots-problem::before { top: -16px; left: -28px; }
+    .dots-problem::after { top: -6px; left: -44px; }
+
+    .dots-guide::before { top: 8px; right: -24px; }
+    .dots-guide::after { top: 24px; right: -36px; }
+
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal-l {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal-r {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal-s {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.vis, .reveal-l.vis, .reveal-r.vis, .reveal-s.vis {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ========================================
+       NAV
+    ======================================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(250, 251, 254, 0.85);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.4s var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(250, 251, 254, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 12px var(--shadow);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .nav-logo img {
+      height: 42px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-2);
+      letter-spacing: 0.01em;
+      transition: color 0.3s var(--ease);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--blue-bright);
+      border-radius: 1px;
+      transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--blue-bright); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta .btn { padding: 12px 24px; min-height: 44px; font-size: 14px; }
+
+    /* Burger */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 28px;
+      cursor: pointer;
+      z-index: 1010;
+    }
+    .nav-burger span {
+      display: block;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all 0.3s var(--ease);
+    }
+    .nav-burger span:nth-child(1) { width: 28px; }
+    .nav-burger span:nth-child(2) { width: 20px; }
+    .nav-burger span:nth-child(3) { width: 24px; }
+    .nav-burger.active span { background: var(--white); }
+    .nav-burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-burger.active span:nth-child(2) { opacity: 0; }
+    .nav-burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); width: 28px; }
+
+    /* Mobile menu overlay */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 1005;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+    }
+    .nav-mobile.open { display: flex; opacity: 1; }
+    .nav-mobile a {
+      font-family: var(--heading);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--white);
+      opacity: 0.7;
+      transition: opacity 0.3s var(--ease);
+    }
+    .nav-mobile a:hover { opacity: 1; }
+    .nav-mobile .btn-primary {
+      margin-top: 16px;
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      padding: 160px 0 100px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--sky-soft);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue);
+      margin-bottom: 28px;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue-bright);
+    }
+    .hero h1 {
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .hero-trust svg {
+      width: 18px; height: 18px;
+      color: var(--blue-bright);
+      flex-shrink: 0;
+    }
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 32px 64px rgba(19, 92, 160, 0.12);
+      border: 1px solid var(--border-light);
+      object-fit: cover;
+    }
+    .hero-image-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to top, var(--bg), transparent);
+      border-radius: 0 0 24px 24px;
+      pointer-events: none;
+    }
+
+    /* ========================================
+       TRUST MARQUEE
+    ======================================== */
+    .marquee-band {
+      background: var(--navy);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 20px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0 24px;
+      white-space: nowrap;
+    }
+    .marquee-item span {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.02em;
+    }
+    .marquee-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--sky);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ========================================
+       PROBLEM SECTION
+    ======================================== */
+    .problem {
+      padding: 140px 0;
+      background: var(--white);
+      position: relative;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .problem-content {
+      max-width: 560px;
+    }
+    .problem h2 {
+      color: var(--blue);
+      margin-bottom: 32px;
+    }
+    .problem p {
+      margin-bottom: 24px;
+      font-size: 16px;
+    }
+    .problem p:last-child { margin-bottom: 0; }
+    .problem-highlight {
+      color: var(--blue-bright);
+      font-weight: 500;
+    }
+    .problem-watermark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .problem-watermark-num {
+      font-family: var(--heading);
+      font-size: clamp(140px, 20vw, 280px);
+      font-weight: 800;
+      color: var(--navy);
+      opacity: 0.04;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      user-select: none;
+    }
+    .problem-watermark-label {
+      position: absolute;
+      bottom: 20%;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ========================================
+       BENEFITS SECTION
+    ======================================== */
+    .benefits {
+      padding: 140px 0;
+      background: var(--teal-bg);
+    }
+    .benefits-header {
+      max-width: 560px;
+      margin-bottom: 64px;
+    }
+    .benefits h2 {
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .benefits-header p {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+    .benefits-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .benefit-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .benefit-item:last-child { border-bottom: 1px solid var(--border); }
+    .benefit-item--accent {
+      border-left: 3px solid var(--blue-bright);
+      padding-left: 24px;
+    }
+    .benefit-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .benefit-icon svg {
+      width: 24px; height: 24px;
+      color: var(--blue-bright);
+    }
+    .benefit-text h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .benefit-text p {
+      font-size: 15px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ========================================
+       GUIDE SECTION
+    ======================================== */
+    .guide {
+      padding: 140px 0;
+      background: var(--white);
+      position: relative;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .guide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--blue-soft);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+    .guide h2 {
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .guide p {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .guide-image-placeholder {
+      position: relative;
+      background: var(--bg-warm);
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 16px 48px var(--shadow);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .guide-image-placeholder span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 24px;
+    }
+
+    /* ========================================
+       STATS SECTION
+    ======================================== */
+    .stats {
+      padding: 100px 0;
+      background: var(--navy);
+      position: relative;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      text-align: center;
+      padding: 32px 16px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: var(--heading);
+      font-size: clamp(52px, 8vw, 80px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+    .stat-number .stat-suffix {
+      color: var(--sky);
+    }
+    .stat-label {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.5;
+    }
+    .stats-source {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.25);
+      font-weight: 300;
+    }
+
+    /* ========================================
+       DEMO MODAL
+    ======================================== */
+    .demo-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 28, 64, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s var(--ease);
+    }
+    .demo-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+    .demo-modal {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 32px 80px rgba(4, 28, 64, 0.3);
+      max-width: 480px;
+      width: 100%;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      transform: scale(0.95) translateY(16px);
+      transition: transform 0.4s var(--ease);
+    }
+    .demo-overlay.open .demo-modal {
+      transform: scale(1) translateY(0);
+    }
+    .demo-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.3s var(--ease);
+      cursor: pointer;
+    }
+    .demo-close:hover {
+      background: var(--blue-soft);
+      color: var(--blue-bright);
+    }
+    .demo-close svg { width: 18px; height: 18px; }
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--blue-soft);
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue-bright);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .demo-modal h3 {
+      font-family: var(--heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .demo-modal .demo-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .demo-modal .demo-cta-line {
+      font-size: 15px;
+      color: var(--text-2);
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+    .demo-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .demo-actions .btn { justify-content: center; width: 100%; }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+
+      .hero { padding: 120px 0 80px; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .hero-content { order: 1; }
+      .hero-image-wrap { order: 2; }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .problem-watermark { display: none; }
+
+      .guide-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(1), .stat-item:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .hero { padding: 110px 0 60px; }
+      .hero-sub { font-size: 16px; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+
+      .problem, .benefits, .guide { padding: 100px 0; }
+
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+      .stat-item:last-child { border-bottom: none; }
+
+      .demo-modal { padding: 36px 24px; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal, .reveal-l, .reveal-r, .reveal-s {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Touch targets */
+    @media (pointer: coarse) {
+      .btn { min-height: 48px; }
+      .nav-links a { padding: 8px 4px; }
+    }
+
+    /* Print */
+    @media print {
+      .nav, .marquee-band, .demo-overlay { display: none !important; }
+      .hero { padding-top: 40px; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <img src="images/logo (1).jpg" alt="First Point Physio">
+        </a>
+        <div class="nav-links">
+          <a href="#" class="demo-link">Services</a>
+          <a href="#" class="demo-link">For PCNs</a>
+          <a href="#" class="demo-link">Results</a>
+          <a href="#" class="demo-link">About</a>
+          <a href="#" class="demo-link">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <a href="#" class="btn btn-primary demo-link">Get in Touch</a>
+        </div>
+        <button class="nav-burger" id="burger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#" class="demo-link">Services</a>
+    <a href="#" class="demo-link">For PCNs</a>
+    <a href="#" class="demo-link">Results</a>
+    <a href="#" class="demo-link">About</a>
+    <a href="#" class="demo-link">Contact</a>
+    <a href="#" class="btn btn-primary demo-link">Get in Touch</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content reveal-l">
+          <div class="hero-badge dots dots-hero-badge">
+            <span class="hero-badge-dot"></span>
+            Managed FCP Services for Primary Care
+          </div>
+          <h1>Reducing Workload Pressure in Primary Care</h1>
+          <p class="hero-sub">Fully managed First Contact Practitioners for your PCN. Small team. Big impact. Zero hassle.</p>
+          <div class="hero-ctas">
+            <a href="#" class="btn btn-primary btn-magnetic demo-link">Get in Touch</a>
+            <a href="#" class="btn btn-outline demo-link">Download Case Study</a>
+          </div>
+          <div class="hero-trust">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            Trusted by 120+ GP surgeries since 2017
+          </div>
+        </div>
+        <div class="hero-image-wrap reveal-r dots dots-hero-img">
+          <img src="images/hero-image-healthy-female-runner.webp" alt="Active patient showing the results of great physiotherapy care">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST MARQUEE -->
+  <div class="marquee-band">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-group">
+        <div class="marquee-item"><span>Since 2017</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>50+ Clinicians</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>120+ GP Surgeries</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>87% Managed In-Service</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>Fully Funded Within ARRS</span><div class="marquee-dot"></div></div>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <div class="marquee-item"><span>Since 2017</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>50+ Clinicians</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>120+ GP Surgeries</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>87% Managed In-Service</span><div class="marquee-dot"></div></div>
+        <div class="marquee-item"><span>Fully Funded Within ARRS</span><div class="marquee-dot"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-content reveal-l">
+          <h2 class="dots dots-problem">Sound Familiar?</h2>
+          <p>Your GPs are overwhelmed. Up to 30% of their caseload is musculoskeletal — patients they could redirect, if only you had the right clinicians in place. But recruitment is slow, retention is harder, and the operational overhead never stops.</p>
+          <p>Large providers promise scale but deliver churn. New faces every few weeks. Clinicians who don't know your patients, your systems, or your culture. The disruption costs more than the gap it was meant to fill.</p>
+          <p><span class="problem-highlight">You need a partner who embeds, stays, and takes ownership — not a provider who treats your practice as a line on a spreadsheet.</span></p>
+        </div>
+        <div class="problem-watermark reveal-s">
+          <span class="problem-watermark-num">30%</span>
+          <span class="problem-watermark-label">of GP caseload is MSK</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-header reveal">
+        <h2>What Changes When You Work With Us</h2>
+        <p>A fully managed service that gives your GPs time back and puts ARRS funding to work — with none of the operational burden.</p>
+      </div>
+      <div class="benefits-list">
+        <!-- 1 -->
+        <div class="benefit-item reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="benefit-text">
+            <h3>GP Time Reclaimed</h3>
+            <p>Our FCPs see MSK patients directly — no GP triage needed. That means fewer appointments clogging your books and more capacity for complex cases that genuinely need a doctor.</p>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="benefit-item reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <div class="benefit-text">
+            <h3>ARRS Funding Put to Work</h3>
+            <p>We operate entirely within your ARRS allocation. No surprise costs, no top-ups. You get a senior clinician embedded in your team, fully funded by the budget that's already there.</p>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="benefit-item reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="benefit-text">
+            <h3>Zero Operational Burden</h3>
+            <p>Recruitment, onboarding, supervision, CPD, clinical governance — we handle all of it. Your practice manager gets time back, and you get a clinician who's ready from day one.</p>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="benefit-item benefit-item--accent reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="benefit-text">
+            <h3>A Partner, Not a Provider</h3>
+            <p>We don't rotate staff. Our clinicians embed in your team, learn your patient population, and stay. That continuity builds trust — with your patients and your GPs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <section class="guide">
+    <div class="container">
+      <div class="guide-grid">
+        <div class="guide-content reveal-l">
+          <div class="guide-badge">Our Approach</div>
+          <h2 class="dots dots-guide">We Know What It's Like</h2>
+          <p>We started as clinicians working inside GP practices. We've seen the pressures first-hand — the overrun lists, the admin burden, the revolving door of locums who never stick around long enough to make a difference.</p>
+          <p>That's why we built First Point Physio differently. We're not a staffing agency. We're a clinical partner that embeds experienced practitioners into your team and takes full responsibility for their performance, governance, and development.</p>
+        </div>
+        <div class="guide-image-placeholder reveal-r">
+          <span>Team photo or FCP in practice</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="87">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">Managed in-service</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="98">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">Clinician utilisation</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="94">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">PCNs recommend us</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="80">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">No GP follow-up needed</div>
+        </div>
+      </div>
+      <p class="stats-source reveal">Source: First Point Physio internal reporting, 2024-25</p>
+    </div>
+  </section>
+
+  <!-- Remaining sections added in next task -->
+
+  <!-- DEMO MODAL -->
+  <div class="demo-overlay" id="demoOverlay">
+    <div class="demo-modal">
+      <button class="demo-close" id="demoClose" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="demo-badge">Homepage Demo</div>
+      <h3>This Is a Demo</h3>
+      <p class="demo-desc">You're viewing a design concept for the First Point Physio website. The full site will include service pages, case studies, contact forms, and more.</p>
+      <p class="demo-cta-line">Like what you see? Let's talk about building the real thing.</p>
+      <div class="demo-actions">
+        <a href="mailto:daniel@dreamfree.co.uk" class="btn btn-primary">daniel@dreamfree.co.uk</a>
+        <a href="tel:07786556885" class="btn btn-outline">07786 556 885</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---- Nav scroll ---- */
+      const nav = document.getElementById('nav');
+      let lastScroll = 0;
+      function handleNavScroll() {
+        const y = window.scrollY;
+        nav.classList.toggle('scrolled', y > 40);
+        lastScroll = y;
+      }
+      window.addEventListener('scroll', handleNavScroll, { passive: true });
+      handleNavScroll();
+
+      /* ---- Mobile menu ---- */
+      const burger = document.getElementById('burger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      let menuOpen = false;
+
+      burger.addEventListener('click', function() {
+        menuOpen = !menuOpen;
+        burger.classList.toggle('active', menuOpen);
+        mobileMenu.classList.toggle('open', menuOpen);
+        document.body.style.overflow = menuOpen ? 'hidden' : '';
+      });
+
+      // Close mobile menu on link click
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          menuOpen = false;
+          burger.classList.remove('active');
+          mobileMenu.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      /* ---- Scroll reveal ---- */
+      if (!prefersReducedMotion) {
+        const reveals = document.querySelectorAll('.reveal, .reveal-l, .reveal-r, .reveal-s');
+        const revealObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry, i) {
+            if (entry.isIntersecting) {
+              // Stagger siblings
+              const parent = entry.target.parentElement;
+              const siblings = parent ? Array.from(parent.children).filter(function(c) {
+                return c.classList.contains('reveal') || c.classList.contains('reveal-l') || c.classList.contains('reveal-r') || c.classList.contains('reveal-s');
+              }) : [];
+              const idx = siblings.indexOf(entry.target);
+              const delay = idx > 0 ? idx * 100 : 0;
+              setTimeout(function() {
+                entry.target.classList.add('vis');
+              }, delay);
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(function(el) { revealObserver.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal, .reveal-l, .reveal-r, .reveal-s').forEach(function(el) {
+          el.classList.add('vis');
+        });
+      }
+
+      /* ---- Counter animation ---- */
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+      function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        const duration = 2500;
+        const start = performance.now();
+
+        function tick(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const value = Math.round(easeOutQuart(progress) * target);
+          el.textContent = value;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+
+        if (prefersReducedMotion) {
+          el.textContent = target;
+        } else {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      const counters = document.querySelectorAll('.counter');
+      const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(function(el) { counterObserver.observe(el); });
+
+      /* ---- Magnetic button ---- */
+      if (!prefersReducedMotion) {
+        document.querySelectorAll('.btn-magnetic').forEach(function(btn) {
+          btn.addEventListener('mousemove', function(e) {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
+          });
+          btn.addEventListener('mouseleave', function() {
+            btn.style.transform = 'translate(0, 0)';
+          });
+        });
+      }
+
+      /* ---- Marquee kinetic speed ---- */
+      if (!prefersReducedMotion) {
+        const marqueeTrack = document.getElementById('marqueeTrack');
+        let marqueeSpeed = 40;
+        window.addEventListener('scroll', function() {
+          const velocity = Math.abs(window.scrollY - lastScroll);
+          const newDuration = Math.max(15, 40 - velocity * 0.5);
+          marqueeTrack.style.animationDuration = newDuration + 's';
+        }, { passive: true });
+      }
+
+      /* ---- Demo modal ---- */
+      const overlay = document.getElementById('demoOverlay');
+      const closeBtn = document.getElementById('demoClose');
+
+      function openModal(e) {
+        if (e) e.preventDefault();
+        overlay.style.display = 'flex';
+        requestAnimationFrame(function() {
+          overlay.classList.add('open');
+        });
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.remove('open');
+        setTimeout(function() {
+          overlay.style.display = 'none';
+        }, 300);
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.demo-link').forEach(function(link) {
+        link.addEventListener('click', openModal);
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+      });
+
+      /* ---- Smooth anchor scroll ---- */
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        if (anchor.classList.contains('demo-link')) return;
+        anchor.addEventListener('click', function(e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
