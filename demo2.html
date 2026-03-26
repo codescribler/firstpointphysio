@@ -187,6 +187,84 @@
       .nav-links, .nav-cta { display: none; }
       .burger { display: flex; }
     }
+
+    /* ═══ HERO (Split Screen) ═══ */
+    .hero {
+      min-height: 100dvh; display: flex; align-items: center;
+      padding: 120px 0 80px; background: var(--bg); position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; top: -200px; right: -100px; width: 600px; height: 600px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(19,92,160,0.06), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 0.85fr; gap: 64px; align-items: center;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge { margin-bottom: 28px; }
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 56px); font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.08; margin-bottom: 24px; color: var(--navy);
+    }
+    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero-sub {
+      font-size: clamp(16px, 1.8vw, 18px); line-height: 1.75; color: var(--text-muted);
+      max-width: 520px; margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 32px; }
+    .hero-trust {
+      font-size: 13px; color: var(--text-light); font-family: var(--heading); font-weight: 500;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-trust svg { width: 16px; height: 16px; stroke: var(--blue); }
+
+    .hero-visual {
+      position: relative; border-radius: var(--r-2xl); overflow: hidden;
+      aspect-ratio: 4/3; background: linear-gradient(135deg, var(--teal-bg-soft), var(--bg-warm));
+    }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(248,249,252,0.3), transparent 60%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; padding: 120px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-content { text-align: left; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; max-width: 360px; }
+      .hero-visual { max-height: 400px; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 100px 0 48px; }
+      .hero-sub { font-size: 15px; }
+    }
+
+    /* ═══ TRUST MARQUEE ═══ */
+    .marquee {
+      background: var(--navy); padding: 18px 0; overflow: hidden; position: relative;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .marquee-track {
+      display: flex; gap: 48px; width: max-content;
+      animation: marquee 35s linear infinite;
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 10px; white-space: nowrap;
+      font-family: var(--heading); font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.02em;
+    }
+    .marquee-item svg { width: 18px; height: 18px; stroke: var(--sky); flex-shrink: 0; }
+    .marquee-divider { color: rgba(255,255,255,0.15); font-size: 18px; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body>
@@ -226,6 +304,62 @@
   </header>
 
   <!-- Sections go here -->
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="badge hero-badge reveal">Managed FCP Services for Primary Care</div>
+          <h1 class="reveal d1">Free Up Your GPs.<br>We Handle <em>MSK</em>.</h1>
+          <p class="hero-sub reveal d2">Fully managed First Contact Practitioners for your PCN — recruited, supervised, and covered. Small team. Big impact. Zero hassle.</p>
+          <div class="hero-ctas reveal d3">
+            <a href="#footer-cta" class="btn btn-primary">
+              Get in Touch
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#case-study" class="btn btn-outline">
+              Download the Case Study
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </a>
+          </div>
+          <div class="hero-trust reveal d4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Trusted by 120+ GP surgeries since 2017
+          </div>
+        </div>
+        <div class="hero-visual reveal d2">
+          <img src="images/hero-image-healthy-female-runner.webp" alt="Physiotherapist consulting with a patient in a GP practice" width="600" height="450">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRUST MARQUEE ═══ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Since 2017</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 50+ Clinicians</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> 120+ GP Surgeries</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 87% Managed In-Service</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Fully Funded Within ARRS</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Since 2017</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 50+ Clinicians</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> 120+ GP Surgeries</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 87% Managed In-Service</span>
+      <span class="marquee-divider">/</span>
+      <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Fully Funded Within ARRS</span>
+      <span class="marquee-divider">/</span>
+    </div>
+  </div>
 
   <script>
   (function() {
