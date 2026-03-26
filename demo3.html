@@ -169,20 +169,39 @@
       background: var(--blue-bright);
       pointer-events: none;
     }
-    .dots::before { width: 56px; height: 56px; opacity: 0.1; }
-    .dots::after { width: 36px; height: 36px; opacity: 0.07; }
+    .dots::before { width: 90px; height: 90px; opacity: 0.08; }
+    .dots::after { width: 56px; height: 56px; opacity: 0.05; }
 
-    .dots-hero-badge::before { top: -24px; right: -52px; }
-    .dots-hero-badge::after { top: 12px; right: -88px; }
+    .dots-hero-badge::before { top: -36px; right: -72px; animation: dotBounce1 12s ease-in-out infinite; }
+    .dots-hero-badge::after { top: 16px; right: -120px; animation: dotBounce2 15s ease-in-out infinite; }
 
-    .dots-hero-img::before { bottom: 60px; right: -32px; width: 72px; height: 72px; }
-    .dots-hero-img::after { bottom: 28px; right: -72px; width: 44px; height: 44px; }
+    .dots-hero-img::before { bottom: 80px; right: -40px; width: 110px; height: 110px; animation: dotBounce3 18s ease-in-out infinite; }
+    .dots-hero-img::after { bottom: 32px; right: -100px; width: 70px; height: 70px; animation: dotBounce1 14s ease-in-out infinite; }
 
-    .dots-problem::before { top: -28px; left: -64px; width: 64px; height: 64px; }
-    .dots-problem::after { top: -4px; left: -108px; }
+    .dots-problem::before { top: -36px; left: -80px; width: 100px; height: 100px; }
+    .dots-problem::after { top: -4px; left: -140px; }
 
-    .dots-guide::before { top: 0px; right: -60px; width: 64px; height: 64px; }
-    .dots-guide::after { top: 40px; right: -100px; }
+    .dots-guide::before { top: -4px; right: -80px; width: 100px; height: 100px; }
+    .dots-guide::after { top: 52px; right: -136px; }
+
+    @keyframes dotBounce1 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(8px, -12px); }
+      50% { transform: translate(-6px, 8px); }
+      75% { transform: translate(10px, 4px); }
+    }
+    @keyframes dotBounce2 {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(-10px, 6px); }
+      66% { transform: translate(6px, -10px); }
+    }
+    @keyframes dotBounce3 {
+      0%, 100% { transform: translate(0, 0); }
+      20% { transform: translate(12px, -8px); }
+      40% { transform: translate(-4px, 14px); }
+      60% { transform: translate(-12px, -6px); }
+      80% { transform: translate(8px, 10px); }
+    }
 
     /* ═══ HERO FLOATING DOTS ═══ */
     .hero-dots { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
@@ -191,28 +210,28 @@
       will-change: transform;
     }
     .hero-dot-1 {
-      width: 360px; height: 360px; opacity: 0.04;
-      top: 5%; right: 5%;
+      width: 500px; height: 500px; opacity: 0.035;
+      top: 0%; right: 2%;
       animation: heroDot1 25s ease-in-out infinite;
     }
     .hero-dot-2 {
-      width: 240px; height: 240px; opacity: 0.05;
-      top: 50%; right: 20%;
+      width: 340px; height: 340px; opacity: 0.045;
+      top: 45%; right: 15%;
       animation: heroDot2 20s ease-in-out infinite;
     }
     .hero-dot-3 {
-      width: 160px; height: 160px; opacity: 0.06;
-      top: 25%; left: 40%;
+      width: 220px; height: 220px; opacity: 0.05;
+      top: 20%; left: 38%;
       animation: heroDot3 30s ease-in-out infinite;
     }
     .hero-dot-4 {
-      width: 440px; height: 440px; opacity: 0.025;
-      bottom: -10%; left: -5%;
+      width: 600px; height: 600px; opacity: 0.02;
+      bottom: -15%; left: -8%;
       animation: heroDot4 22s ease-in-out infinite;
     }
     .hero-dot-5 {
-      width: 120px; height: 120px; opacity: 0.07;
-      top: 15%; left: 25%;
+      width: 180px; height: 180px; opacity: 0.06;
+      top: 12%; left: 22%;
       animation: heroDot5 18s ease-in-out infinite;
     }
     @keyframes heroDot1 {
@@ -841,8 +860,8 @@
     .step-desc { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 460px; }
     .process-cta { margin-top: 48px; }
 
-    .dots-process::before { top: -28px; right: -52px; width: 64px; height: 64px; }
-    .dots-process::after { top: 8px; right: -96px; }
+    .dots-process::before { top: -36px; right: -72px; width: 100px; height: 100px; }
+    .dots-process::after { top: 12px; right: -132px; }
 
     /* ========================================
        BLUE ICON CARDS (WHAT SETS US APART)
@@ -891,8 +910,8 @@
     .apart-grid > .blue-card:first-child h3 { font-size: 24px; }
     .apart-grid > .blue-card:first-child p { font-size: 15px; max-width: 640px; }
 
-    .dots-apart::before { top: -28px; left: -64px; width: 72px; height: 72px; }
-    .dots-apart::after { top: -2px; left: -112px; width: 44px; height: 44px; }
+    .dots-apart::before { top: -36px; left: -80px; width: 110px; height: 110px; }
+    .dots-apart::after { top: 0px; left: -148px; width: 70px; height: 70px; }
 
     /* ========================================
        SERVICE OVERVIEW
@@ -927,8 +946,8 @@
       text-align: center;
     }
 
-    .dots-service::before { top: 0px; right: -60px; width: 64px; height: 64px; }
-    .dots-service::after { top: 40px; right: -100px; width: 40px; height: 40px; }
+    .dots-service::before { top: -4px; right: -80px; width: 100px; height: 100px; }
+    .dots-service::after { top: 52px; right: -136px; width: 64px; height: 64px; }
 
     /* ========================================
        CASE STUDY CTA
