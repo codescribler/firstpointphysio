@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Fully managed First Contact Practitioners for your PCN. 50+ clinicians, 120+ GP surgeries, since 2017.">
-  <title>First Point Physio — Reducing Workload Pressure in Primary Care</title>
+  <title>Demo 3 — First Point Physio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -169,20 +169,20 @@
       background: var(--blue-bright);
       pointer-events: none;
     }
-    .dots::before { width: 90px; height: 90px; opacity: 0.08; }
-    .dots::after { width: 56px; height: 56px; opacity: 0.05; }
+    .dots::before { width: 160px; height: 160px; opacity: 0.07; }
+    .dots::after { width: 100px; height: 100px; opacity: 0.05; }
 
     .dots-hero-badge::before { top: -36px; right: -72px; animation: dotBounce1 12s ease-in-out infinite; }
     .dots-hero-badge::after { top: 16px; right: -120px; animation: dotBounce2 15s ease-in-out infinite; }
 
-    .dots-hero-img::before { bottom: 80px; right: -40px; width: 110px; height: 110px; animation: dotBounce3 18s ease-in-out infinite; z-index: -1; }
-    .dots-hero-img::after { bottom: 32px; right: -100px; width: 70px; height: 70px; animation: dotBounce1 14s ease-in-out infinite; z-index: -1; }
+    .dots-hero-img::before { bottom: 80px; right: -40px; width: 180px; height: 180px; animation: dotBounce3 18s ease-in-out infinite; z-index: -1; }
+    .dots-hero-img::after { bottom: 32px; right: -100px; width: 120px; height: 120px; animation: dotBounce1 14s ease-in-out infinite; z-index: -1; }
 
-    .dots-problem::before { top: -36px; left: -80px; width: 100px; height: 100px; }
-    .dots-problem::after { top: -4px; left: -140px; }
+    .dots-problem::before { top: -50px; left: -90px; width: 180px; height: 180px; animation: sectionDot1 22s ease-in-out infinite; }
+    .dots-problem::after { top: -10px; left: -160px; width: 120px; height: 120px; animation: sectionDot2 28s ease-in-out infinite; }
 
-    .dots-guide::before { top: -4px; right: -80px; width: 100px; height: 100px; }
-    .dots-guide::after { top: 52px; right: -136px; }
+    .dots-guide::before { top: -20px; right: -90px; width: 180px; height: 180px; animation: sectionDot3 25s ease-in-out infinite; }
+    .dots-guide::after { top: 40px; right: -160px; width: 120px; height: 120px; animation: sectionDot1 20s ease-in-out infinite; }
 
     @keyframes dotBounce1 {
       0%, 100% { transform: translate(0, 0); }
@@ -203,61 +203,98 @@
       80% { transform: translate(8px, 10px); }
     }
 
+    /* ═══ SECTION DOT DRIFT ═══ */
+    @keyframes sectionDot1 {
+      0% { transform: translate(0, 0); }
+      23% { transform: translate(15px, -20px); }
+      51% { transform: translate(-10px, 12px); }
+      77% { transform: translate(18px, 8px); }
+      100% { transform: translate(0, 0); }
+    }
+    @keyframes sectionDot2 {
+      0% { transform: translate(0, 0); }
+      19% { transform: translate(-18px, 14px); }
+      44% { transform: translate(12px, -18px); }
+      68% { transform: translate(-8px, -10px); }
+      89% { transform: translate(14px, 16px); }
+      100% { transform: translate(0, 0); }
+    }
+    @keyframes sectionDot3 {
+      0% { transform: translate(0, 0); }
+      31% { transform: translate(20px, 10px); }
+      57% { transform: translate(-14px, -16px); }
+      82% { transform: translate(8px, 20px); }
+      100% { transform: translate(0, 0); }
+    }
+
     /* ═══ HERO FLOATING DOTS ═══ */
-    .hero-dots { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .hero-dots { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1; }
     .hero-dot {
-      position: absolute; border-radius: 50%; background: var(--blue-bright);
+      position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.12);
       will-change: transform;
     }
     .hero-dot-1 {
-      width: 500px; height: 500px; opacity: 0.035;
-      top: 0%; right: 2%;
+      width: 400px; height: 400px; opacity: 0.12;
+      top: -10%; right: 5%;
       animation: heroDot1 25s ease-in-out infinite;
     }
     .hero-dot-2 {
-      width: 340px; height: 340px; opacity: 0.045;
-      top: 45%; right: 15%;
+      width: 280px; height: 280px; opacity: 0.14;
+      bottom: 10%; right: 20%;
       animation: heroDot2 20s ease-in-out infinite;
     }
     .hero-dot-3 {
-      width: 220px; height: 220px; opacity: 0.05;
-      top: 20%; left: 38%;
+      width: 200px; height: 200px; opacity: 0.16;
+      top: 15%; left: 10%;
       animation: heroDot3 30s ease-in-out infinite;
     }
     .hero-dot-4 {
-      width: 600px; height: 600px; opacity: 0.02;
-      bottom: -15%; left: -8%;
+      width: 320px; height: 320px; opacity: 0.1;
+      bottom: 5%; left: 5%;
       animation: heroDot4 22s ease-in-out infinite;
     }
     .hero-dot-5 {
-      width: 180px; height: 180px; opacity: 0.06;
-      top: 12%; left: 22%;
+      width: 160px; height: 160px; opacity: 0.18;
+      top: 50%; right: 40%;
       animation: heroDot5 18s ease-in-out infinite;
     }
     @keyframes heroDot1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(-30px, 20px) scale(1.08); }
-      50% { transform: translate(15px, -25px) scale(0.95); }
-      75% { transform: translate(-20px, -10px) scale(1.05); }
+      0% { transform: translate(0, 0) scale(1); }
+      18% { transform: translate(120px, -80px) scale(1.12); }
+      41% { transform: translate(-90px, 60px) scale(0.9); }
+      63% { transform: translate(60px, 110px) scale(1.06); }
+      84% { transform: translate(-140px, -40px) scale(0.95); }
+      100% { transform: translate(0, 0) scale(1); }
     }
     @keyframes heroDot2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(25px, -20px) scale(1.1); }
-      66% { transform: translate(-15px, 30px) scale(0.9); }
+      0% { transform: translate(0, 0) scale(1); }
+      22% { transform: translate(-100px, 90px) scale(0.88); }
+      47% { transform: translate(130px, 40px) scale(1.15); }
+      71% { transform: translate(-60px, -120px) scale(0.94); }
+      100% { transform: translate(0, 0) scale(1); }
     }
     @keyframes heroDot3 {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(40px, -30px); }
+      0% { transform: translate(0, 0) scale(1); }
+      15% { transform: translate(80px, 100px) scale(1.1); }
+      38% { transform: translate(-110px, -50px) scale(0.92); }
+      56% { transform: translate(140px, -90px) scale(1.05); }
+      79% { transform: translate(-70px, 70px) scale(0.88); }
+      100% { transform: translate(0, 0) scale(1); }
     }
     @keyframes heroDot4 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      40% { transform: translate(30px, -20px) scale(1.06); }
-      80% { transform: translate(-20px, 15px) scale(0.97); }
+      0% { transform: translate(0, 0) scale(1); }
+      27% { transform: translate(100px, -70px) scale(1.08); }
+      52% { transform: translate(-80px, 100px) scale(0.9); }
+      78% { transform: translate(50px, -130px) scale(1.12); }
+      100% { transform: translate(0, 0) scale(1); }
     }
     @keyframes heroDot5 {
-      0%, 100% { transform: translate(0, 0); }
-      30% { transform: translate(-20px, 15px); }
-      70% { transform: translate(25px, -20px); }
+      0% { transform: translate(0, 0) scale(1); }
+      19% { transform: translate(-120px, -60px) scale(1.14); }
+      43% { transform: translate(90px, 110px) scale(0.86); }
+      67% { transform: translate(-50px, -100px) scale(1.08); }
+      88% { transform: translate(110px, 30px) scale(0.93); }
+      100% { transform: translate(0, 0) scale(1); }
     }
 
     /* ========================================
@@ -399,28 +436,54 @@
        HERO
     ======================================== */
     .hero {
-      padding: 160px 0 100px;
-      background: var(--bg);
       position: relative;
       overflow: hidden;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative; z-index: 1;
-      gap: 48px;
+      min-height: 600px;
+      display: flex;
       align-items: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(10, 30, 44, 0.88) 0%,
+        rgba(10, 30, 44, 0.7) 45%,
+        rgba(10, 30, 44, 0.25) 75%,
+        rgba(10, 30, 44, 0.1) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+      padding: 160px 0 100px;
     }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 8px 18px;
-      background: var(--sky-soft);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-full);
       font-size: 13px;
       font-weight: 500;
-      color: var(--blue);
+      color: rgba(255, 255, 255, 0.85);
       margin-bottom: 28px;
     }
     .hero-badge-dot {
@@ -429,13 +492,13 @@
       background: var(--blue-bright);
     }
     .hero h1 {
-      color: var(--navy);
+      color: #FFFFFF;
       margin-bottom: 24px;
     }
     .hero-sub {
       font-size: 18px;
       font-weight: 300;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.7);
       line-height: 1.75;
       margin-bottom: 40px;
       max-width: 480px;
@@ -451,37 +514,13 @@
       align-items: center;
       gap: 10px;
       font-size: 14px;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.6);
       font-weight: 400;
     }
     .hero-trust svg {
       width: 18px; height: 18px;
       color: var(--blue-bright);
       flex-shrink: 0;
-    }
-    .hero-image-wrap {
-      position: relative;
-      z-index: 2;
-      margin-right: -60px;
-    }
-    .hero-image-wrap img {
-      width: 100%;
-      max-width: 477px;
-      height: auto;
-      border-radius: 28px;
-      box-shadow: 0 40px 80px rgba(19, 92, 160, 0.15);
-      border: 1px solid var(--border-light);
-      object-fit: cover;
-      margin-left: auto;
-    }
-    .hero-image-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 100px;
-      background: linear-gradient(to top, var(--bg), transparent);
-      border-radius: 0 0 28px 28px;
-      pointer-events: none;
     }
 
     /* ========================================
@@ -570,21 +609,29 @@
     }
     .problem-watermark-num {
       font-family: var(--heading);
-      font-size: clamp(140px, 20vw, 280px);
-      font-weight: 800;
-      color: var(--navy);
-      opacity: 0.04;
+      font-size: clamp(160px, 22vw, 320px);
+      font-weight: 900;
+      background: linear-gradient(160deg, var(--navy) 30%, var(--blue-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.12;
       line-height: 1;
       letter-spacing: -0.04em;
       user-select: none;
+      position: relative;
+      z-index: 1;
     }
     .problem-watermark-label {
       position: absolute;
-      bottom: 20%;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--text-muted);
+      bottom: 15%;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      opacity: 0.5;
       text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
     /* ========================================
@@ -864,8 +911,8 @@
     .step-desc { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 460px; }
     .process-cta { margin-top: 48px; }
 
-    .dots-process::before { top: -36px; right: -72px; width: 100px; height: 100px; }
-    .dots-process::after { top: 12px; right: -132px; }
+    .dots-process::before { top: -50px; right: -80px; width: 180px; height: 180px; animation: sectionDot2 24s ease-in-out infinite; }
+    .dots-process::after { top: 10px; right: -150px; width: 110px; height: 110px; animation: sectionDot3 30s ease-in-out infinite; }
 
     /* ========================================
        BLUE ICON CARDS (WHAT SETS US APART)
@@ -914,8 +961,8 @@
     .apart-grid > .blue-card:first-child h3 { font-size: 24px; }
     .apart-grid > .blue-card:first-child p { font-size: 15px; max-width: 640px; }
 
-    .dots-apart::before { top: -36px; left: -80px; width: 110px; height: 110px; }
-    .dots-apart::after { top: 0px; left: -148px; width: 70px; height: 70px; }
+    .dots-apart::before { top: -50px; left: -90px; width: 190px; height: 190px; animation: sectionDot1 26s ease-in-out infinite; }
+    .dots-apart::after { top: -5px; left: -170px; width: 120px; height: 120px; animation: sectionDot2 22s ease-in-out infinite; }
 
     /* ========================================
        SERVICE OVERVIEW
@@ -950,14 +997,14 @@
       text-align: center;
     }
 
-    .dots-service::before { top: -4px; right: -80px; width: 100px; height: 100px; }
-    .dots-service::after { top: 52px; right: -136px; width: 64px; height: 64px; }
+    .dots-service::before { top: -20px; right: -90px; width: 170px; height: 170px; animation: sectionDot3 27s ease-in-out infinite; }
+    .dots-service::after { top: 40px; right: -160px; width: 110px; height: 110px; animation: sectionDot1 23s ease-in-out infinite; }
 
     /* ========================================
        CASE STUDY CTA
     ======================================== */
     .case-study { padding: 140px 0; background: var(--navy); position: relative; }
-    .case-study-inner { max-width: 540px; margin: 0 auto; text-align: center; }
+    .case-study-inner { max-width: 680px; margin: 0 auto; text-align: center; }
     .case-study-badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 18px;
@@ -968,40 +1015,33 @@
     }
     .case-study h2 { color: var(--white); margin-bottom: 16px; }
     .case-study-sub { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 40px; }
-    .case-study-form {
-      display: flex; gap: 12px;
+    .case-study .btn {
+      margin-bottom: 40px;
     }
-    .case-study-form input {
-      flex: 1; padding: 16px 20px;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius-full);
-      color: var(--white);
-      font-family: var(--body); font-size: 15px; font-weight: 300;
-      outline: none;
-      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    .case-study-proof {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: nowrap;
     }
-    .case-study-form input::placeholder { color: rgba(255,255,255,0.35); }
-    .case-study-form input:focus {
-      border-color: var(--blue-bright);
-      box-shadow: 0 0 0 3px var(--blue-glow);
+    .case-study-proof-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 400;
     }
-    .case-study-form button {
-      padding: 16px 32px;
-      background: var(--blue-bright);
-      color: var(--white);
-      border-radius: var(--radius-full);
-      font-family: var(--body); font-size: 15px; font-weight: 500;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 4px 16px var(--blue-glow);
-      transition: all 0.4s var(--ease);
-      cursor: pointer;
-      white-space: nowrap;
+    .case-study-proof-num {
+      font-family: var(--heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--blue-bright);
     }
-    .case-study-form button:hover {
-      background: var(--blue-hover);
-      box-shadow: 0 8px 32px rgba(63,123,240,0.25);
-      transform: translateY(-2px);
+    .case-study-proof-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     /* ========================================
@@ -1047,13 +1087,7 @@
       .nav-links, .nav-cta { display: none; }
       .nav-burger { display: flex; }
 
-      .hero { padding: 120px 0 80px; }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .hero-content { order: 1; }
-      .hero-image-wrap { order: 2; margin-right: 0; }
+      .hero-content { padding: 120px 0 80px; }
 
       .problem-grid {
         grid-template-columns: 1fr;
@@ -1086,15 +1120,15 @@
 
     @media (max-width: 640px) {
       .container { padding: 0 20px; }
-      .hero { padding: 110px 0 60px; }
+      .hero-content { padding: 110px 0 60px; }
       .hero-sub { font-size: 16px; }
       .hero-ctas { flex-direction: column; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
 
       .problem, .benefits, .guide, .process, .apart, .service, .case-study { padding: 100px 0; }
 
-      .case-study-form { flex-direction: column; }
-      .case-study-form button { width: 100%; }
+      .case-study-proof { gap: 20px; }
+      .case-study-proof-divider { display: none; }
       .process-step { grid-template-columns: 1fr; gap: 12px; }
       .step-num { font-size: 32px; }
       .footer-bar { flex-direction: column; gap: 8px; text-align: center; }
@@ -1128,7 +1162,7 @@
     /* Print */
     @media print {
       .nav, .marquee-band, .demo-overlay { display: none !important; }
-      .hero { padding-top: 40px; }
+      .hero-content { padding-top: 40px; }
       body { background: white; }
       .blue-card { background: #3f7bf0 !important; }
     }
@@ -1174,6 +1208,9 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg">
+      <img src="images/physioatwork.png" alt="Physiotherapist treating a patient's shoulder in a bright clinical setting">
+    </div>
     <div class="hero-dots" aria-hidden="true">
       <div class="hero-dot hero-dot-1"></div>
       <div class="hero-dot hero-dot-2"></div>
@@ -1182,27 +1219,22 @@
       <div class="hero-dot hero-dot-5"></div>
     </div>
     <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content reveal-l">
-          <div class="hero-badge dots dots-hero-badge">
-            <span class="hero-badge-dot"></span>
-            Managed FCP Services for Primary Care
-          </div>
-          <h1>Reducing Workload Pressure in Primary Care</h1>
-          <p class="hero-sub">Fully managed First Contact Practitioners for your PCN. Small team. Big impact. Zero hassle.</p>
-          <div class="hero-ctas">
-            <a href="#" class="btn btn-primary btn-magnetic demo-link">Get in Touch</a>
-            <a href="#" class="btn btn-outline demo-link">Download Case Study</a>
-          </div>
-          <div class="hero-trust">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-            Trusted by 120+ GP surgeries since 2017
-          </div>
+      <div class="hero-content reveal-l">
+        <div class="hero-badge dots dots-hero-badge">
+          <span class="hero-badge-dot"></span>
+          Managed FCP Services for Primary Care
         </div>
-        <div class="hero-image-wrap reveal-r dots dots-hero-img">
-          <img src="images/Physio arm pic.png" alt="Physiotherapist assessing a patient's shoulder mobility in a clinical setting">
+        <h1>Reducing Workload Pressure in Primary Care</h1>
+        <p class="hero-sub">Fully managed First Contact Practitioners for your PCN. Small team. Big impact. Zero hassle.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-primary btn-magnetic demo-link">Get in Touch</a>
+          <a href="#" class="btn btn-outline demo-link">Download Case Study</a>
+        </div>
+        <div class="hero-trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Trusted by 120+ GP surgeries since 2017
         </div>
       </div>
     </div>
@@ -1503,10 +1535,20 @@
         <div class="case-study-badge">See the Evidence</div>
         <h2>See the Results for Yourself</h2>
         <p class="case-study-sub">Download our case study showing how a PCN freed up GP time and put ARRS funding to work.</p>
-        <form class="case-study-form" id="caseStudyForm" onsubmit="return false;">
-          <input type="email" placeholder="Your email address" required>
-          <button type="submit">Download</button>
-        </form>
+        <a href="#" class="btn btn-primary btn-magnetic demo-link">Download the Case Study</a>
+        <div class="case-study-proof">
+          <div class="case-study-proof-item">
+            <span class="case-study-proof-num">120+</span> GP surgeries served
+          </div>
+          <div class="case-study-proof-divider"></div>
+          <div class="case-study-proof-item">
+            <span class="case-study-proof-num">50+</span> clinicians deployed
+          </div>
+          <div class="case-study-proof-divider"></div>
+          <div class="case-study-proof-item">
+            <span class="case-study-proof-num">87%</span> managed in-service
+          </div>
+        </div>
       </div>
     </div>
   </section>
